@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useTheme } from './theme-provider';
 
-export type TypeWriterSegment = { text: string, colourClass: string }
+export type TypeWriterSegmentProps = { text: string, colourClass: string }
 
-const TypewriterText = ({ staticText, textSegments }: { staticText: string, textSegments: TypeWriterSegment[] }) => {
+const TypewriterText = ({ staticText, textSegments, className }: { staticText: string, textSegments: TypeWriterSegmentProps[], className?: string }) => {
     const [currentAnimatedSegmentIndex, setCurrentAnimatedSegmentIndex] = useState(0);
 
     useEffect(() => {
@@ -19,8 +19,8 @@ const TypewriterText = ({ staticText, textSegments }: { staticText: string, text
     }, [textSegments.length]);
 
     return (
-        <div>
-            <span className="text-4xl sm:text-4xl lg:text-5xl font-semibold leading-tight tracking-wide">
+        <div className={className}>
+            <span className="text-4xl sm:text-3xl lg:text-4xl font-semibold leading-tight tracking-wide">
                 {/* Render the static text in white */}
                 <span>{staticText}</span>
                 {/* Render the TypewriterEffect component for the currently selected animated segment */}
@@ -33,7 +33,7 @@ const TypewriterText = ({ staticText, textSegments }: { staticText: string, text
     );
 }
 
-const TypewriterEffect = ({ segment, speed = 100 }: { segment: TypeWriterSegment, speed: number }) => {
+const TypewriterEffect = ({ segment, speed = 100 }: { segment: TypeWriterSegmentProps, speed: number }) => {
     const { theme } = useTheme();
     // State to store the array of displayed characters, where each character carries its associated color class.
     const [displayedChars, setDisplayedChars] = useState<any>([]);
@@ -85,7 +85,7 @@ const TypewriterEffect = ({ segment, speed = 100 }: { segment: TypeWriterSegment
             {/* The cursor only shows if there's an active segment to type or just finished typing. */}
             {segment && (
                 <span
-                    className={`typewriter-cursor w-[0.1em] h-[0.9em] mb-3 inline-block ml-2 animate-blink-cursor ${theme == "light" ? "bg-black" : "bg-white"}`}
+                    className={`typewriter-cursor w-[0.16em] h-[0.8em] mb-2 inline-block ml-2 animate-blink-cursor ${theme == "light" ? "bg-black" : "bg-white"}`}
                     style={{ verticalAlign: 'middle' }}
                 ></span>
             )}

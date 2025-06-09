@@ -4,51 +4,51 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(1.0000 0 0);
-  --foreground: oklch(0.2312 0.0019 286.2502);
-  --card: oklch(1.0000 0 0);
-  --card-foreground: oklch(0.2312 0.0019 286.2502);
-  --popover: oklch(1.0000 0 0);
-  --popover-foreground: oklch(0.2312 0.0019 286.2502);
-  --primary: oklch(0.2312 0.0019 286.2502);
+  --background: oklch(0.9808 0.0091 258.3352);
+  --foreground: oklch(0.1502 0.0507 258.9959);
+  --card: oklch(0.9494 0.0241 259.8240);
+  --card-foreground: oklch(0.1502 0.0507 258.9959);
+  --popover: oklch(0.9491 0 0);
+  --popover-foreground: oklch(0.1502 0.0507 258.9959);
+  --primary: oklch(0.3588 0.1398 259.1119);
   --primary-foreground: oklch(0.9851 0 0);
-  --secondary: oklch(0.9702 0 0);
-  --secondary-foreground: oklch(0.2312 0.0019 286.2502);
-  --muted: oklch(0.9702 0 0);
-  --muted-foreground: oklch(0.5555 0 0);
-  --accent: oklch(0.9702 0 0);
-  --accent-foreground: oklch(0.2312 0.0019 286.2502);
-  --destructive: oklch(0.5973 0.2429 26.2645);
-  --destructive-foreground: oklch(1.0000 0 0);
-  --border: oklch(0.9219 0 0);
-  --input: oklch(0.9219 0 0);
-  --ring: oklch(0.7090 0 0);
+  --secondary: oklch(0.9006 0 0);
+  --secondary-foreground: oklch(0.1502 0.0507 258.9959);
+  --muted: oklch(0.9006 0 0);
+  --muted-foreground: oklch(0.4997 0 0);
+  --accent: oklch(0.9006 0 0);
+  --accent-foreground: oklch(0.1502 0.0507 258.9959);
+  --destructive: oklch(0.5007 0.1501 20.0666);
+  --destructive-foreground: oklch(0.9851 0 0);
+  --border: oklch(0.8514 0 0);
+  --input: oklch(0.8514 0 0);
+  --ring: oklch(0.6993 0 0);
   --chart-1: oklch(0.9131 0.0433 251.5173);
   --chart-2: oklch(0.6949 0.1604 260.0582);
   --chart-3: oklch(0.6143 0.2080 263.2988);
   --chart-4: oklch(0.5415 0.2539 263.9062);
   --chart-5: oklch(0.4606 0.2481 264.4596);
-  --sidebar: oklch(0.9851 0 0);
-  --sidebar-foreground: oklch(0.2312 0.0019 286.2502);
-  --sidebar-primary: oklch(0.2312 0.0019 286.2502);
+  --sidebar: oklch(0.8996 0.0095 286.2077);
+  --sidebar-foreground: oklch(0.1502 0.0507 258.9959);
+  --sidebar-primary: oklch(0.3501 0.1502 264.0764);
   --sidebar-primary-foreground: oklch(0.9851 0 0);
-  --sidebar-accent: oklch(0.9702 0 0);
-  --sidebar-accent-foreground: oklch(0.2312 0.0019 286.2502);
-  --sidebar-border: oklch(0.9219 0 0);
-  --sidebar-ring: oklch(0.7090 0 0);
+  --sidebar-accent: oklch(0.9006 0 0);
+  --sidebar-accent-foreground: oklch(0.1502 0.0507 258.9959);
+  --sidebar-border: oklch(0.8514 0 0);
+  --sidebar-ring: oklch(0.6993 0 0);
   --font-sans: Plus Jakarta Sans, sans-serif;
   --font-serif: Lora, serif;
   --font-mono: Fira Code, monospace;
   --radius: 0.5rem;
-  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
-  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
-  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
-  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
-  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
-  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
-  --tracking-normal: 0.02em;
+  --shadow-2xs: 0 0.125rem 0.25rem 0 hsl(0 0% 0% / 0.10);
+  --shadow-xs: 0 0.125rem 0.25rem 0 hsl(0 0% 0% / 0.10);
+  --shadow-sm: 0 0.125rem 0.25rem 0 hsl(0 0% 0% / 0.20), 0 1px 2px -1px hsl(0 0% 0% / 0.20);
+  --shadow: 0 0.125rem 0.25rem 0 hsl(0 0% 0% / 0.20), 0 1px 2px -1px hsl(0 0% 0% / 0.20);
+  --shadow-md: 0 0.125rem 0.25rem 0 hsl(0 0% 0% / 0.20), 0 2px 4px -1px hsl(0 0% 0% / 0.20);
+  --shadow-lg: 0 0.125rem 0.25rem 0 hsl(0 0% 0% / 0.20), 0 4px 6px -1px hsl(0 0% 0% / 0.20);
+  --shadow-xl: 0 0.125rem 0.25rem 0 hsl(0 0% 0% / 0.20), 0 8px 10px -1px hsl(0 0% 0% / 0.20);
+  --shadow-2xl: 0 0.125rem 0.25rem 0 hsl(0 0% 0% / 0.50);
+  --tracking-normal: 0;
 }
 
 .dark {
@@ -156,6 +156,34 @@
   --tracking-wide: calc(var(--tracking-normal) + 0.025em);
   --tracking-wider: calc(var(--tracking-normal) + 0.05em);
   --tracking-widest: calc(var(--tracking-normal) + 0.1em);
+
+  --animate-meteor: meteor 5s linear infinite;
+
+  @keyframes meteor {
+    0% {
+      transform: rotate(215deg) translateX(0);
+      opacity: 1;
+    }
+
+    70% {
+      opacity: 1;
+    }
+
+    100% {
+      transform: rotate(215deg) translateX(-500px);
+      opacity: 0;
+    }
+  }
+}
+
+@utility star {
+  @apply absolute rounded-full bg-white;
+  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
+}
+
+@utility meteor {
+  @apply absolute bg-linear-to-r from-white via-white to-transparent rounded-full;
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
 }
 
 body {
@@ -170,4 +198,23 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.waving-hand {
+  animation-name: wave-animation;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  transform-origin: 70% 70%;
+  display: inline-block;
+}
+
+@keyframes wave-animation {
+  0% { transform: rotate( 0.0deg) }
+  15% { transform: rotate(14.0deg) }  /* The following five values can be played with to make the waving more or less extreme */
+  30% { transform: rotate(-8.0deg) }
+  40% { transform: rotate(14.0deg) }
+  50% { transform: rotate(-4.0deg) }
+  60% { transform: rotate(10.0deg) }
+  70% { transform: rotate( 0.0deg) }  /* Reset for the last half to pause */
+ 100% { transform: rotate( 0.0deg) }
 }

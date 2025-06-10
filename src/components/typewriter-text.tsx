@@ -20,7 +20,7 @@ const TypewriterText = ({ staticText, textSegments, className }: { staticText: s
 
     return (
         <div className={className}>
-            <span className="text-4xl sm:text-3xl lg:text-4xl font-semibold leading-tight tracking-wide">
+            <span className="font-semibold leading-tight tracking-wide">
                 {/* Render the static text in white */}
                 <span>{staticText}</span>
                 {/* Render the TypewriterEffect component for the currently selected animated segment */}

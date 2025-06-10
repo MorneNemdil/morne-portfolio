@@ -2,18 +2,43 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "./theme-provider"
 import { Button } from "./ui/button"
 import { Card } from "./ui/card"
+import { useEffect, useState } from "react";
 
 const Header = () => {
     const { theme, setTheme } = useTheme();
+    const [isVisible, setIsVisible] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > lastScrollY) {
+                setIsVisible(false);
+            } else {
+                setIsVisible(true);
+            }
+
+            setLastScrollY(currentScrollY);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [lastScrollY]);
+
     return (
-        <div className="sticky top-3 z-10">
+        <div className={`fixed top-0 left-0 w-full z-10 transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-5"
+            }`}>
             <Card className="bg-white m-3">
                 <div className="text-black">
-                    <Button onClick={() => setTheme(theme == 'light' ? 'dark' : 'light')}>{theme == 'light' ? <Moon /> : <Sun />}</Button>
+                    <Button onClick={() => setTheme(theme == "light" ? "dark" : "light")}>
+                        {theme == "light" ? <Moon /> : <Sun />}
+                    </Button>
                 </div>
             </Card>
         </div>
-    )
+    );
+
 }
 
 export default Header

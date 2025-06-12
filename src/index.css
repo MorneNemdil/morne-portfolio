@@ -6,8 +6,8 @@
 :root {
   --background: oklch(0.9808 0.0091 258.3352);
   --foreground: oklch(0.1502 0.0507 258.9959);
-  --card: oklch(0.9494 0.0241 259.8240);
-  --card-foreground: oklch(0.1502 0.0507 258.9959);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.1450 0 0);
   --popover: oklch(0.9491 0 0);
   --popover-foreground: oklch(0.1502 0.0507 258.9959);
   --primary: oklch(0.3588 0.1398 259.1119);
@@ -54,8 +54,8 @@
 .dark {
   --background: oklch(0.1478 0.0716 264.9879);
   --foreground: oklch(0.9851 0 0);
-  --card: oklch(0.2352 0.1399 282.3342);
-  --card-foreground: oklch(1.0000 0 0);
+  --card: oklch(0.1476 0.0594 262.6518);
+  --card-foreground: oklch(0.8607 0 0);
   --popover: oklch(0.3979 0 0);
   --popover-foreground: oklch(0.9851 0 0);
   --primary: oklch(0.5038 0.2937 285.3753);
@@ -185,16 +185,17 @@
   @apply absolute bg-linear-to-r from-white via-white to-transparent rounded-full;
   box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
 }
+
 @utility header-link {
   @apply hover:text-black hover:cursor-pointer transition-colors duration-370
 }
 
 @utility main-section {
-  @apply flex flex-col items-center justify-center h-screen w-screen gap-13
+  @apply flex flex-col items-center justify-center h-screen w-screen gap-13 mx-4
 }
 
 @utility section-title {
-  @apply font-extrabold text-3xl sm:text-5xl
+  @apply font-extrabold text-5xl
 }
 
 body {
@@ -220,12 +221,37 @@ body {
 }
 
 @keyframes wave-animation {
-  0% { transform: rotate( 0.0deg) }
-  15% { transform: rotate(14.0deg) }  /* The following five values can be played with to make the waving more or less extreme */
-  30% { transform: rotate(-8.0deg) }
-  40% { transform: rotate(14.0deg) }
-  50% { transform: rotate(-4.0deg) }
-  60% { transform: rotate(10.0deg) }
-  70% { transform: rotate( 0.0deg) }  /* Reset for the last half to pause */
- 100% { transform: rotate( 0.0deg) }
+  0% {
+    transform: rotate(0.0deg)
+  }
+
+  15% {
+    transform: rotate(14.0deg)
+  }
+
+  /* The following five values can be played with to make the waving more or less extreme */
+  30% {
+    transform: rotate(-8.0deg)
+  }
+
+  40% {
+    transform: rotate(14.0deg)
+  }
+
+  50% {
+    transform: rotate(-4.0deg)
+  }
+
+  60% {
+    transform: rotate(10.0deg)
+  }
+
+  70% {
+    transform: rotate(0.0deg)
+  }
+
+  /* Reset for the last half to pause */
+  100% {
+    transform: rotate(0.0deg)
+  }
 }

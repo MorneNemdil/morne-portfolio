@@ -3,6 +3,8 @@ import { StarBackground } from "@/components/star-background";
 import { useTheme } from "@/components/theme-provider"
 import TypewriterText, { type TypeWriterSegmentProps } from "@/components/typewriter-text";
 import TempImage from "@/assets/bluePic.avif";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 const HomePage = () => {
     const { theme } = useTheme();
@@ -38,23 +40,48 @@ const HomePage = () => {
 
     const AboutSection = () => {
         return (<section id="about" className="main-section">
-            <div className="section-title">About Me</div>
-            <div className="flex flex-col md:flex-row gap-3 h-[40vh] w-[70vw]">
-                <div className="h-full w-1/3">
-                    <img className="float-on-hover h-full border rounded-full transition-shadow duration-300 hover:shadow-lg" src={TempImage} />
+            <div className="section-title">About Me 💭</div>
+            <div className="flex flex-col items-center lg:flex-row lg:justify-center gap-10 w-[80vw]">
+                <div className="flex flex-col h-[80%] justify-between gap-10">
+                    <div className="h-5/6 flex justify-center items-center">
+                        <img className="md:h-55 md:w-200 border rounded-full transition-shadow duration-300 shadow-lg" src={TempImage} />
+                    </div>
+                    <div className="h-1/6 flex justify-center"><Button className="">Contact me</Button></div>
                 </div>
-                <div className="w-2/3 flex flex-col gap-3 text-gray-300 text-lg">
-                    <p>I'm a passionate web developer with a strong foundation in front-end and back-end technologies. I specialize in building responsive, user-friendly websites and web applications that balance form and function. With a solid understanding of XML, CSS, and TypeScript, I love turning ideas into well-crafted digital experiences.</p>
-                    <p>I’m constantly learning and enjoy keeping up with the latest web trends and technologies. Whether collaborating with a team or working independently, I bring attention to detail, problem-solving skills, and a drive for clean, maintainable code to every project I take on.</p>
-                </div>
+                <Card className="opacity-95">
+                    <div className={`grow flex flex-col gap-3 text-2xl`}>
+                        <p>I'm a passionate web developer with a strong foundation in front-end and back-end technologies. I specialize in building responsive, user-friendly websites and web applications that balance form and function. With a solid understanding of XML, CSS, and TypeScript, I love turning ideas into well-crafted digital experiences.</p>
+                        <p>I’m constantly learning and enjoy keeping up with the latest web trends and technologies. Whether collaborating with a team or working independently, I bring attention to detail, problem-solving skills, and a drive for clean, maintainable code to every project I take on.</p>
+                    </div>
+                </Card>
             </div>
         </section>)
     }
 
     const EducationSection = () => {
         return (<section id="education" className="main-section">
-            <div className="section-title">Education</div>
-            <div>Content</div>
+            <div className="section-title">Education 🎓</div>
+            <div className="flex justify-center gap-10 w-[60vw]">
+                <div className="flex flex-col items-center w-1/2 gap-5">
+                    <div className="text-4xl text-purple-400">College</div>
+                    <div className="text-2xl px-5">
+                        College is where I chose to go all in on a computer-related career. I studied hard for the grades that I achieved and I built the work ethic to go on to do a University degree.
+                    </div>
+                    <div className="w-full text-2xl flex justify-start px-9">
+                        <ul className="list-outside list-disc">
+                            <li>Computer Science: A</li>
+                            <li>Physics: B</li>
+                            <li>Mathematics: B</li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="flex flex-col items-center w-1/2 gap-5">
+                    <div className="text-4xl text-purple-400">University</div>
+                    <div className="text-2xl px-5">
+                        I'm currently in my 4th year of my undergraduate degree in Computer Science at the University of Sussex, on track to achieve a grade 1st. In my third year, I worked as a web developer for RSM UK which is where I really honed in on web development as a career. More about my work with RSM in the work section.
+                    </div>
+                </div>
+            </div>
         </section>)
     }
 

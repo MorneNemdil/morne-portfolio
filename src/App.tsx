@@ -2,17 +2,18 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import HomePage from "./pages/home/home-page"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "sonner"
+import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 // Appwrite imports:
 // import { UserProvider } from "./lib/context/user"
 // import Login from "./pages/auth/login/login"
 
 function App() {
-  // GET THIS WORKING:
-  // useEffect(() => {
-  //   AOS.init()
-  // }, []);
+  useEffect(() => {
+    AOS.init()
+  }, []);
 
   return (
     // ============ IF USING APPWRITE: ============

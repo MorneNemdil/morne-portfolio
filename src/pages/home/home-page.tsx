@@ -23,14 +23,16 @@ const HomePage = () => {
     const HeroSection = () => {
         return (<section id="hero" className="main-section">
             <div className="text-start w-95 sm:w-130 md:w-170 lg:w-220 xl:w-270 flex flex-col gap-5 mt-10">
-                <div>
+                <div data-aos="fade-right" data-aos-duration={600}>
                     <div className={`${heroTitleSize} flex font-extrabold`}>
                         <div>Hi,&nbsp;</div><div className="text-purple-500">I'm Morné&nbsp;</div><span className="waving-hand">👋</span>
                     </div>
                 </div>
                 <div className="ml-1">
-                    <TypewriterText staticText={typewriterText} textSegments={typewriterSegments} className={`${heroDescriptionSize}`} />
-                    <div className={`${heroDescriptionSize} font-semibold leading-tight tracking-wide`}>
+                    <div data-aos="fade-right" data-aos-duration={600} data-aos-delay={300}>
+                        <TypewriterText staticText={typewriterText} textSegments={typewriterSegments} className={`${heroDescriptionSize}`} />
+                    </div>
+                    <div data-aos="fade-right" data-aos-duration={600} data-aos-delay={600} className={`${heroDescriptionSize} font-semibold leading-tight tracking-wide`}>
                         Welcome to my Portfolio, feel free to have a look around and get in touch with me for more info!
                     </div>
                 </div>

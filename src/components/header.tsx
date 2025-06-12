@@ -28,7 +28,7 @@ const Header = () => {
     }, [lastScrollY]);
 
     return (
-        <div className={`fixed top-0 left-0 w-full z-10 transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-5"
+        <div className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-5"
             }`}>
             <Card className="bg-white m-3 text-gray-500">
                 <div className="flex justify-between">

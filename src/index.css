@@ -176,6 +176,57 @@
   }
 }
 
+.dot,
+.ring {
+  position: fixed;
+  pointer-events: none; /* Crucial to allow clicking elements beneath the cursor */
+  transform: translate(-50%, -50%); /* Centers the elements on the mouse pointer */
+  z-index: 9999; /* Ensure it's on top of other content */
+}
+
+
+/* MOUSE EFFECT START */
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background-color: rgb(169, 0, 158); /* Or your preferred dot color */
+  border-radius: 50%;
+  transition:
+    transform 0.1s ease-out,
+    background-color 0.1s ease-out,
+    width 0.1s ease-out,
+    height 0.1s ease-out;
+}
+
+.ring {
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgb(169, 0, 158); /* Or your preferred ring color */
+  border-radius: 50%;
+  transition:
+    transform 0.15s ease-out,
+    width 0.15s ease-out,
+    height 0.15s ease-out,
+    border-color 0.15s ease-out; /* Slightly slower transition for the ring */
+}
+
+/* Click Effect */
+.dot.clicked {
+  width: 12px;
+  height: 12px;
+  background-color: rgb(169, 0, 158); /* Example: Fades and grows */
+}
+
+.ring.clicked {
+  width: 60px; /* Example: Ring expands */
+  height: 60px;
+  border-color: rgb(255, 0, 238); /* Example: Ring becomes more transparent */
+}
+
+/* MOUSE EFFECT END */
+
+
 @utility star {
   @apply absolute rounded-full bg-white;
   box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
@@ -186,7 +237,7 @@
   box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
 }
 @utility header-link {
-  @apply hover:text-black hover:cursor-pointer transition-colors duration-370
+  @apply hover:text-black transition-colors duration-370
 }
 
 @utility main-section {
@@ -203,7 +254,7 @@ body {
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-ring/50 cursor-none;
   }
 
   body {

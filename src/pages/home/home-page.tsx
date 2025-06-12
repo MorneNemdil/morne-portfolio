@@ -3,6 +3,7 @@ import { StarBackground } from "@/components/star-background";
 import { useTheme } from "@/components/theme-provider"
 import TypewriterText, { type TypeWriterSegmentProps } from "@/components/typewriter-text";
 import TempImage from "@/assets/bluePic.avif";
+import DotRing from "@/components/dot-ring";
 
 const HomePage = () => {
     const { theme } = useTheme();
@@ -60,12 +61,15 @@ const HomePage = () => {
 
     return (
         <div>
-            {theme == 'dark' && <StarBackground />}
             <Header />
-            <HeroSection />
-            <AboutSection />
-            <EducationSection />
-            <section className="h-screen"></section>
+            <div className="cursor-none">
+                {theme == 'dark' && <StarBackground />}
+                <DotRing />
+                <HeroSection />
+                <AboutSection />
+                <EducationSection />
+                <section className="h-screen"></section>
+            </div>
         </div>
     )
 }

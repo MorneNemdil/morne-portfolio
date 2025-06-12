@@ -19,3 +19,10 @@ export function createArtworkFromDocument(document: Models.Document): ArtworkIte
 
   return artworkItem;
 }
+
+export function scrollToSection(id: string) {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+};

@@ -185,6 +185,17 @@
   @apply absolute bg-linear-to-r from-white via-white to-transparent rounded-full;
   box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
 }
+@utility header-link {
+  @apply hover:text-black hover:cursor-pointer transition-colors duration-370
+}
+
+@utility main-section {
+  @apply flex flex-col items-center justify-center h-screen w-screen gap-13
+}
+
+@utility section-title {
+  @apply font-extrabold text-3xl sm:text-5xl
+}
 
 body {
   letter-spacing: var(--tracking-normal);

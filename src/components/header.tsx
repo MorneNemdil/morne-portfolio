@@ -3,7 +3,7 @@ import { useTheme } from "./theme-provider"
 import { Button } from "./ui/button"
 import { Card } from "./ui/card"
 import { useEffect, useState } from "react";
-import { scrollToSection } from "@/lib/utils";
+import { scrollToSectionMiddle } from "@/lib/utils";
 
 const Header = () => {
     const { theme, setTheme } = useTheme();
@@ -32,12 +32,12 @@ const Header = () => {
             }`}>
             <Card className="bg-white m-3 text-gray-500 p-5">
                 <div className="flex justify-between">
-                    <div className="flex items-center ml-2 header-link" onClick={() => scrollToSection("hero")}>Logo</div>
+                    <div className="flex items-center ml-2 header-link" onClick={() => scrollToSectionMiddle("hero")}>Logo</div>
                     <div className="flex gap-3 items-center">
                         <div className="flex gap-3 items-center font-semibold text-l">
-                            <div onClick={() => scrollToSection("about")} className="header-link">About</div>
-                            <div onClick={() => scrollToSection("education")} className="header-link">Education</div>
-                            <div className="header-link">Work</div>
+                            <div onClick={() => scrollToSectionMiddle("about")} className="header-link">About</div>
+                            <div onClick={() => scrollToSectionMiddle("education")} className="header-link">Education</div>
+                            <div onClick={() => scrollToSectionMiddle("work")} className="header-link">Work</div>
                             <div className="header-link">Technologies</div>
                             <div className="header-link">Contact</div>
                         </div>

@@ -20,9 +20,25 @@ export function createArtworkFromDocument(document: Models.Document): ArtworkIte
   return artworkItem;
 }
 
-export function scrollToSection(id: string) {
+export function scrollToSectionTop(id: string) {
   const element = document.getElementById(id);
   if (element) {
     element.scrollIntoView({ behavior: "smooth" });
+  }
+};
+
+export function scrollToSectionMiddle(id: string) {
+  const element = document.getElementById(id);
+  if (element) {
+    const elementRect = element.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+    // Calculate the desired scroll position to center the element
+    const scrollY = elementRect.top - (viewportHeight / 2) + (elementRect.height / 2) + window.scrollY;
+
+    window.scrollTo({
+      top: scrollY,
+      behavior: "smooth"
+    });
   }
 };

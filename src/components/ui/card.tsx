@@ -1,13 +1,16 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
+import { useTheme } from "../theme-provider"
+
 
 function Card({ className, ...props }: React.ComponentProps<"div">) {
+  const { theme } = useTheme();
   return (
     <div
       data-slot="card"
       className={cn(
-        "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border p-6",
+        "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border p-6", (theme == 'dark' ? " custom-card-shadow-dark" : " custom-card-shadow"),
         className
       )}
       {...props}

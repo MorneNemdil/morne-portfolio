@@ -5,8 +5,13 @@ import TypewriterText, { type TypeWriterSegmentProps } from "@/components/typewr
 import TempImage from "@/assets/bluePic.avif";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { scrollToSectionMiddle } from "@/lib/utils";
+import { cn, scrollToSectionMiddle } from "@/lib/utils";
 import { ArrowDown } from "lucide-react";
+import { type JSX } from "react";
+import EmblaCarousel from "@/components/embla-ui/embla-carousel";
+import type { EmblaOptionsType } from 'embla-carousel'
+import '@/embla.css';
+import useBreakpoint from "@/lib/use-breakpoint";
 
 const HomePage = () => {
     const { theme } = useTheme();
@@ -23,9 +28,9 @@ const HomePage = () => {
     const heroDescriptionSize = "text-xl sm:text-2xl md:text-3xl";
 
     const HeroSection = () => {
-        return (<section id="hero" className="main-section mt-50">
+        return (<section id="hero" className="main-section mt-30 md:mt-50">
             <div className="text-start w-95 sm:w-130 md:w-170 lg:w-220 xl:w-270 flex flex-col gap-5">
-                <div data-aos="fade-right" data-aos-duration={600}>
+                <div data-aos="fade-up" data-aos-duration={600}>
                     <div className={`${heroTitleSize} flex font-extrabold`}>
                         <div>Hi,&nbsp;</div><div className="text-purple-500">I'm Morné&nbsp;</div><span className="waving-hand">👋</span>
                     </div>
@@ -39,29 +44,29 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
-            <ArrowDown className="mt-[10vh] border border-purple-300 rounded-full p-1.5 animate-bounce" size={48} />
+            <ArrowDown className="mt-[10vh] border border-purple-300 rounded-full p-1.5 animate-bounce hover:cursor-pointer" onClick={() => scrollToSectionMiddle("about")} size={48} />
         </section>)
     }
 
     const AboutSection = () => {
         return (<section id="about" className="main-section">
-            <div className="section-title">About Me 💭</div>
+            <div data-aos="fade-up" className="section-title">About Me 💭</div>
             <div className="flex flex-col items-center lg:flex-row lg:justify-center gap-10 w-[80vw]">
                 <div className="flex flex-col h-[80%] justify-between gap-10">
-                    <div className="h-5/6 flex justify-center items-center">
+                    <div data-aos="fade-right" className="h-5/6 flex justify-center items-center">
                         <img className="rounded-full min-h-40 min-w-40 max-h-60 max-w-60" src={TempImage} />
                     </div>
-                    <div className="h-1/6 flex justify-center"><Button className="">Contact me</Button></div>
+                    <div data-aos="fade-right" className="h-1/6 flex justify-center"><Button onClick={() => scrollToSectionMiddle("contact")}>Contact me</Button></div>
                 </div>
-                <Card className="opacity-95 font-semibold md:font-normal transition-all hover:custom-shadow-pink">
-                    <div className={`grow flex flex-col gap-3 text-lg sm:text-xl md:text-2xl`}>
+                <Card data-aos="fade-left" className="opacity-95 font-semibold md:font-normal transition-all">
+                    <div data-aos="fade-left" data-aos-delay={250} className={`grow flex flex-col gap-3 text-lg sm:text-xl md:text-2xl`}>
                         <div>I'm a passionate web developer based in Brighton, UK, and have a love for turning your ideas into well-crafted digital experiences. With a solid understanding of XML, CSS, Typescript, and many other tools, I specialise in creating responsive and user-friendly websites that balance form and function.</div>
                         <div>I’m constantly learning and enjoy keeping up with the latest web trends and technologies. Whether collaborating with a team or working independently, I bring attention to detail, problem-solving skills, and a drive for clean, maintainable code to every project I take on.</div>
                         <div className="flex flex-wrap items-baseline">
                             <div
                                 className="font-bold text-gray-500 hover:cursor-pointer transition-all duration-700 hover:text-pink-500 hover:shadow-2xl hover:-rotate-2 hover:text-[26px] inline-block"
                                 onClick={() => scrollToSectionMiddle("contact")}>
-                                Shoot me a message&nbsp;
+                                Get in touch&nbsp;
                             </div>
                             <span className="inline">if you're ready to take your business to the next level with a clean, responsive and functional website.</span>
                         </div>
@@ -73,10 +78,10 @@ const HomePage = () => {
 
     const EducationSection = () => {
         return (<section id="education" className="main-section mt-[70vh] xl:mt-[10vh]">
-            <div className="section-title">Education 🎓</div>
+            <div className="section-title" data-aos="fade-up">Education 🎓</div>
             <div className="flex flex-col 2xl:flex-row w-full 2xl:w-[60vw] justify-center items-center gap-10 text-lg font-semibold md:font-normal sm:text-xl md:text-2xl">
-                <Card className="flex flex-col items-center w-[75%] 2xl:w-1/2 gap-5 h-full transition-all hover:custom-shadow-pink">
-                    <div className="text-4xl text-purple-400">College</div>
+                <Card data-aos="fade-right" className={cn("flex flex-col items-center w-[75%] 2xl:w-1/2 gap-5 h-full transition-all")}>
+                    <div className={"text-3xl md:text-4xl".concat(theme == 'dark' ? ' text-purple-400' : ' text-blue-400')}>College</div>
                     <div className="px-5">
                         College is where I chose to go all in on a computer-related career. I studied hard for the grades that I achieved and I built the work ethic to go on to do a University degree.
                     </div>
@@ -88,10 +93,10 @@ const HomePage = () => {
                         </ul>
                     </div>
                 </Card>
-                <Card className="flex flex-col items-center w-[75%] 2xl:w-1/2 gap-5 h-full transition-all hover:custom-shadow-pink">
-                    <div className="text-4xl text-purple-400">University</div>
+                <Card data-aos="fade-left" data-aos-delay={200} className="flex flex-col items-center w-[75%] 2xl:w-1/2 gap-5 h-full transition-all">
+                    <div className={"text-3xl md:text-4xl".concat(theme == 'dark' ? ' text-purple-400' : ' text-blue-400')}>University</div>
                     <div className="px-5">
-                        I'm currently in my 4th year of my undergraduate degree in Computer Science at the University of Sussex, on track to achieve a grade 1st. In my third year, I worked as a web developer for RSM UK which is where I really honed in on web development as a career. More about my work with RSM in the work section.
+                        I'm currently in my 4th year of my undergraduate degree in Computer Science at the University of Sussex, on track to achieve a grade 1st. In my third year, I worked as a web developer for RSM UK which is where I really honed in on web development as a career. More about my work with RSM below.
                     </div>
                 </Card>
             </div>
@@ -99,8 +104,20 @@ const HomePage = () => {
     }
 
     const WorkSection = () => {
+        const breakpoint = useBreakpoint();
+
+        const OPTIONS: EmblaOptionsType = { loop: true, axis:  breakpoint == 'md' ? 'y' : 'x'}
+        const SLIDES: { index: number, content: JSX.Element }[] = [
+            { index: 0, content: <div>Slide 1</div> },
+            { index: 1, content: <div>Slide 2</div> },
+            { index: 2, content: <div>Slide 3</div> },
+            { index: 3, content: <div>Slide 4</div> },
+            { index: 4, content: <div>Slide 5</div> },
+        ]
+
         return (<section id="work" className="main-section">
             <div className="section-title">Work 💻</div>
+            <EmblaCarousel slides={SLIDES} options={OPTIONS} />
         </section>)
     }
 

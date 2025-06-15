@@ -220,8 +220,24 @@ body {
   display: inline-block;
 }
 
-@utility custom-shadow-pink {
-  @apply shadow-[8px_7px_8px_rgba(243,29,232,0.1)]
+@utility custom-card-shadow {
+  @apply shadow-[0px_0px_40px_rgba(23,_103,_255,_0.3)]
+}
+
+@utility custom-card-shadow-dark {
+  @apply shadow-[0px_0px_40px_rgba(243,29,232,0.1)]
+}
+
+@utility card-tilt-right {
+  @apply transition-all duration-700 rotate-y-45 translate-1 opacity-90
+}
+
+@utility card-tilt-left {
+  @apply transition-all duration-700 -rotate-y-30 translate-1 opacity-90
+}
+
+@utility no-tilt-transition {
+  @apply transition-none
 }
 
 @keyframes wave-animation {

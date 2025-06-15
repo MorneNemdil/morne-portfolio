@@ -12,7 +12,6 @@ import EmblaCarousel from "@/components/embla-ui/embla-carousel";
 import type { EmblaOptionsType } from 'embla-carousel'
 import '@/embla.css';
 import useBreakpoint from "@/lib/use-breakpoint";
-import EmblaCarouselMobile from "@/components/embla-ui/embla-carousel-mobile";
 import WorkCarouselMobile from "@/components/work-carousel-mobile";
 
 const HomePage = () => {

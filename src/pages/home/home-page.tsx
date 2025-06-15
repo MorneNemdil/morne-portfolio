@@ -12,6 +12,8 @@ import EmblaCarousel from "@/components/embla-ui/embla-carousel";
 import type { EmblaOptionsType } from 'embla-carousel'
 import '@/embla.css';
 import useBreakpoint from "@/lib/use-breakpoint";
+import EmblaCarouselMobile from "@/components/embla-ui/embla-carousel-mobile";
+import WorkCarouselMobile from "@/components/work-carousel-mobile";
 
 const HomePage = () => {
     const { theme } = useTheme();
@@ -105,8 +107,7 @@ const HomePage = () => {
 
     const WorkSection = () => {
         const breakpoint = useBreakpoint();
-
-        const OPTIONS: EmblaOptionsType = { loop: true, axis:  breakpoint == 'md' ? 'y' : 'x'}
+        const OPTIONS: EmblaOptionsType = { loop: true }
         const SLIDES: { index: number, content: JSX.Element }[] = [
             { index: 0, content: <div>Slide 1</div> },
             { index: 1, content: <div>Slide 2</div> },
@@ -117,7 +118,9 @@ const HomePage = () => {
 
         return (<section id="work" className="main-section">
             <div className="section-title">Work 💻</div>
-            <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+            {breakpoint == 'xl'
+                ? <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+                : <WorkCarouselMobile />}
         </section>)
     }
 

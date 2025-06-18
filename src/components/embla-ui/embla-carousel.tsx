@@ -59,11 +59,11 @@ const EmblaCarousel = (props: EmblaCarouselProps) => {
                     {slides.map(({ index, content }) => (
                         <div className="embla__slide py-10 px-3 perspective-distant perspective-origin-right" key={index}>
                             <Card
-                                className={`h-90 w-80
+                                className={`h-110 w-100
                                     ${index === prevIndex || index === secondPrevIndex ? "card-tilt-right" : ""}
                                     ${index === nextIndex || index === secondNextIndex ? "card-tilt-left" : ""}
                                     ${index === currentIndex && (index === lastIndex) ? "" : "no-tilt-transition"}
-                                    ${index == currentIndex && "scale-105 ml-2"}
+                                    ${index == currentIndex && "scale-105"}
                                 `}
                             >
                                 {content}

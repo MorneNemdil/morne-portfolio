@@ -13,9 +13,13 @@ import type { EmblaOptionsType } from 'embla-carousel'
 import '@/embla.css';
 import useBreakpoint from "@/lib/use-breakpoint";
 import WorkCarouselMobile from "@/components/work-carousel-mobile";
+import WorkSectionCard from "@/components/work-section-card";
+import PortfolioImage from "@/assets/portfolio-screenshot.jpg";
+import SanazImage from "@/assets/sanaz-image.png";
 
 const HomePage = () => {
     const { theme } = useTheme();
+    const breakpoint = useBreakpoint();
 
     const typewriterText = "I'm a ";
     const typewriterSegments: TypeWriterSegmentProps[] = [
@@ -29,7 +33,7 @@ const HomePage = () => {
     const heroDescriptionSize = "text-xl sm:text-2xl md:text-3xl";
 
     const HeroSection = () => {
-        return (<section id="hero" className="main-section mt-30 md:mt-50">
+        return (<section id="hero" className="main-section lg:mt-[20vh]">
             <div className="text-start w-95 sm:w-130 md:w-170 lg:w-220 xl:w-270 flex flex-col gap-5">
                 <div data-aos="fade-up" data-aos-duration={600}>
                     <div className={`${heroTitleSize} flex font-extrabold`}>
@@ -50,7 +54,7 @@ const HomePage = () => {
     }
 
     const AboutSection = () => {
-        return (<section id="about" className="main-section">
+        return (<section id="about" className="main-section lg:mt-[20vh] xl:mt-[10vh]">
             <div data-aos="fade-up" className="section-title">About Me 💭</div>
             <div className="flex flex-col items-center lg:flex-row lg:justify-center gap-10 w-[80vw]">
                 <div className="flex flex-col h-[80%] justify-between gap-10">
@@ -59,13 +63,13 @@ const HomePage = () => {
                     </div>
                     <div data-aos="fade-right" className="h-1/6 flex justify-center"><Button onClick={() => scrollToSectionMiddle("contact")}>Contact me</Button></div>
                 </div>
-                <Card data-aos="fade-left" className="opacity-95 font-semibold md:font-normal transition-all">
+                <Card data-aos="fade-left" className="font-semibold md:font-normal transition-all">
                     <div data-aos="fade-left" data-aos-delay={250} className={`grow flex flex-col gap-3 text-lg sm:text-xl md:text-2xl`}>
                         <div>I'm a passionate web developer based in Brighton, UK, and have a love for turning your ideas into well-crafted digital experiences. With a solid understanding of XML, CSS, Typescript, and many other tools, I specialise in creating responsive and user-friendly websites that balance form and function.</div>
                         <div>I’m constantly learning and enjoy keeping up with the latest web trends and technologies. Whether collaborating with a team or working independently, I bring attention to detail, problem-solving skills, and a drive for clean, maintainable code to every project I take on.</div>
                         <div className="flex flex-wrap items-baseline">
                             <div
-                                className="font-bold text-gray-500 hover:cursor-pointer transition-all duration-700 hover:text-pink-500 hover:shadow-2xl hover:-rotate-2 hover:text-[26px] inline-block"
+                                className={`font-bold ${breakpoint == 'md' ? 'text-gray-500 hover:cursor-pointer transition-all duration-700 hover:text-pink-500 hover:shadow-2xl hover:-rotate-2 hover:text-[26px]' : 'text-pink-500'} inline-block`}
                                 onClick={() => scrollToSectionMiddle("contact")}>
                                 Get in touch&nbsp;
                             </div>
@@ -78,7 +82,7 @@ const HomePage = () => {
     }
 
     const EducationSection = () => {
-        return (<section id="education" className="main-section mt-[70vh] xl:mt-[10vh]">
+        return (<section id="education" className="main-section mt-[40vh] lg:mt-[20vh] xl:mt-[10vh]">
             <div className="section-title" data-aos="fade-up">Education 🎓</div>
             <div className="flex flex-col 2xl:flex-row w-full 2xl:w-[60vw] justify-center items-center gap-10 text-lg font-semibold md:font-normal sm:text-xl md:text-2xl">
                 <Card data-aos="fade-right" className={cn("flex flex-col items-center w-[75%] 2xl:w-1/2 gap-5 h-full transition-all")}>
@@ -108,18 +112,50 @@ const HomePage = () => {
         const breakpoint = useBreakpoint();
         const OPTIONS: EmblaOptionsType = { loop: true }
         const SLIDES: { index: number, content: JSX.Element }[] = [
-            { index: 0, content: <div>Slide 1</div> },
-            { index: 1, content: <div>Slide 2</div> },
-            { index: 2, content: <div>Slide 3</div> },
-            { index: 3, content: <div>Slide 4</div> },
-            { index: 4, content: <div>Slide 5</div> },
+            {
+                index: 0,
+                content: <WorkSectionCard
+                    title="Sanaz Art and Fashion"
+                    description="An art and fashion website for a designer based in Bournemouth."
+                    image={SanazImage}
+                    siteLink="https://www.sanazartandfashion.com"
+                />
+            }, {
+                index: 1,
+                content: <WorkSectionCard
+                    title="My portfolio website"
+                    description="A clean and responsive portfolio showing off my UI capabilities. Visit this page to learn more about me and get in touch with me!"
+                    image={PortfolioImage}
+                    siteLink="https://www.mornenemdil.com"
+                />
+            },
         ]
 
-        return (<section id="work" className="main-section">
+        const EMPTY_SLIDES = [{
+            index: 2,
+            content: <WorkSectionCard
+                title="Coming soon!"
+                description="Stay tuned ..."
+            />
+        }, {
+            index: 3,
+            content: <WorkSectionCard
+                title="Coming soon!"
+                description="Stay tuned ..."
+            />
+        }, {
+            index: 4,
+            content: <WorkSectionCard
+                title="Coming soon!"
+                description="Stay tuned ..."
+            />
+        }]
+
+        return (<section id="work" className="main-section lg:mt-[20vh] xl:mt-[30vh]">
             <div className="section-title">Work 💻</div>
             {breakpoint == 'xl'
-                ? <EmblaCarousel slides={SLIDES} options={OPTIONS} />
-                : <WorkCarouselMobile />}
+                ? <EmblaCarousel slides={SLIDES.concat(EMPTY_SLIDES)} options={OPTIONS} />
+                : <WorkCarouselMobile slides={SLIDES} />}
         </section>)
     }
 

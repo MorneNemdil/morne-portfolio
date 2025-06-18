@@ -1,5 +1,5 @@
 .embla {
-    max-width: 48rem;
+    max-width: 35rem;
     margin: auto;
     --slide-height: 19rem;
     --slide-spacing: 0.1rem;
@@ -11,7 +11,7 @@
 
 .embla__viewport {
     overflow: hidden;
-    width: 1100px;
+    width: 1300px;
 }
 
 .embla__container {

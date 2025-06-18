@@ -3,12 +3,14 @@ import { useTheme } from "./theme-provider"
 import { Button } from "./ui/button"
 import { Card } from "./ui/card"
 import { useEffect, useState } from "react";
-import { scrollToSectionMiddle } from "@/lib/utils";
+import { scrollToSectionMiddle, scrollToSectionTop } from "@/lib/utils";
+import useBreakpoint from "@/lib/use-breakpoint";
 
 const Header = () => {
     const { theme, setTheme } = useTheme();
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
+    const breakpoint = useBreakpoint();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -35,8 +37,8 @@ const Header = () => {
                     <div className="flex items-center ml-2 header-link" onClick={() => scrollToSectionMiddle("hero")}>Logo</div>
                     <div className="flex gap-3 items-center">
                         <div className="flex gap-3 items-center font-semibold text-l">
-                            <div onClick={() => scrollToSectionMiddle("about")} className="header-link">About</div>
-                            <div onClick={() => scrollToSectionMiddle("education")} className="header-link">Education</div>
+                            <div onClick={() => breakpoint == 'sm' ? scrollToSectionTop("about") : scrollToSectionMiddle("about")} className="header-link">About</div>
+                            <div onClick={() => breakpoint == 'sm' ? scrollToSectionTop("education") : scrollToSectionMiddle("education")} className="header-link">Education</div>
                             <div onClick={() => scrollToSectionMiddle("work")} className="header-link">Work</div>
                             <div className="header-link">Technologies</div>
                             <div className="header-link">Contact</div>

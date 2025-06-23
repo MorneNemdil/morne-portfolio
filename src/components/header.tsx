@@ -1,10 +1,11 @@
-import { Moon, Sun } from "lucide-react";
+import { Menu, Moon, Sun } from "lucide-react";
 import { useTheme } from "./theme-provider"
 import { Button } from "./ui/button"
 import { Card } from "./ui/card"
 import { useEffect, useState } from "react";
 import { scrollToSectionMiddle, scrollToSectionTop } from "@/lib/utils";
 import useBreakpoint from "@/lib/use-breakpoint";
+import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
 
 const Header = () => {
     const { theme, setTheme } = useTheme();
@@ -29,26 +30,71 @@ const Header = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, [lastScrollY]);
 
+    const navlinks = [
+        { name: 'home', displayName: "Home", scrollFunc: breakpoint == 'sm' ? scrollToSectionTop : scrollToSectionMiddle },
+        { name: 'about', displayName: "About", scrollFunc: breakpoint == 'sm' ? scrollToSectionTop : scrollToSectionMiddle },
+        { name: 'artwork', displayName: "Education", scrollFunc: breakpoint == 'sm' ? scrollToSectionTop : scrollToSectionMiddle },
+        { name: 'fashion', displayName: "Work", scrollFunc: scrollToSectionMiddle },
+        { name: 'technologies', displayName: "Technologies", scrollFunc: scrollToSectionMiddle },
+        { name: 'contact', displayName: "Contact", scrollFunc: () => { } },
+    ];
+
+    const DesktopHeader = () => {
+        return <Card className="bg-white m-3 text-gray-500 p-5 w-full">
+            <div className="flex justify-between">
+                <div className="flex items-center ml-2 header-link" onClick={() => scrollToSectionMiddle("hero")}>Logo</div>
+                <div className="flex gap-3 items-center">
+                    <div className="flex gap-3 items-center font-semibold text-l">
+                        {navlinks.filter(x => x.name !== 'home')
+                            .map(navlink => <div onClick={() => navlink.scrollFunc(navlink.name)} className="header-link">{navlink.displayName}</div>)}
+                    </div>
+                    <Button onClick={() => setTheme(theme == "light" ? "dark" : "light")}>
+                        {theme == "light" ? <Moon /> : <Sun />}
+                    </Button>
+                </div>
+            </div>
+        </Card>
+    }
+
+    const MobileHeader = () => {
+        return <div>
+            <Card className="bg-white m-3 text-gray-500 p-1.5 w-min flex !rounded-full border-solid border-gray-400">
+                <Sheet>
+                    <SheetTrigger asChild>
+                        <Menu />
+                    </SheetTrigger>
+                    <SheetContent>
+                        <SheetHeader>
+                            <SheetTitle>Morne's Portfolio</SheetTitle>
+                            <SheetDescription>
+                                Navigate to different sections here!
+                            </SheetDescription>
+                            <div className="flex flex-col gap-5 py-3">
+                                {navlinks.map(section => (
+                                    <SheetClose asChild key={section.name}>
+                                        <div onClick={() => scroll} className={`text-lg font-semibold underline cursor-pointer`}>
+                                            {section.displayName}
+                                        </div>
+                                    </SheetClose>
+                                ))}
+                            </div>
+                        </SheetHeader>
+                    </SheetContent>
+                </Sheet>
+            </Card>
+        </div>
+    }
+
+
     return (
         <div className={`fixed top-0 left-0 w-full z-10 transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-5"
             }`}>
-            <Card className="bg-white m-3 text-gray-500 p-5">
-                <div className="flex justify-between">
-                    <div className="flex items-center ml-2 header-link" onClick={() => scrollToSectionMiddle("hero")}>Logo</div>
-                    <div className="flex gap-3 items-center">
-                        <div className="flex gap-3 items-center font-semibold text-l">
-                            <div onClick={() => breakpoint == 'sm' ? scrollToSectionTop("about") : scrollToSectionMiddle("about")} className="header-link">About</div>
-                            <div onClick={() => breakpoint == 'sm' ? scrollToSectionTop("education") : scrollToSectionMiddle("education")} className="header-link">Education</div>
-                            <div onClick={() => scrollToSectionMiddle("work")} className="header-link">Work</div>
-                            <div className="header-link">Technologies</div>
-                            <div className="header-link">Contact</div>
-                        </div>
-                        <Button onClick={() => setTheme(theme == "light" ? "dark" : "light")}>
-                            {theme == "light" ? <Moon /> : <Sun />}
-                        </Button>
-                    </div>
-                </div>
-            </Card>
+            <div className="md:hidden">
+                <MobileHeader />
+            </div>
+            <div className="hidden md:flex flex-grow justify-end">
+                <DesktopHeader />
+            </div>
         </div>
     );
 

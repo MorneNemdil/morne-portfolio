@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn, scrollToSectionMiddle } from "@/lib/utils";
 import { ArrowDown } from "lucide-react";
-import { type JSX } from "react";
+import { useEffect, useState, type JSX } from "react";
 import EmblaCarousel from "@/components/embla-ui/embla-carousel";
 import type { EmblaOptionsType } from 'embla-carousel'
 import '@/embla.css';
@@ -16,6 +16,10 @@ import WorkCarouselMobile from "@/components/work-carousel-mobile";
 import WorkSectionCard from "@/components/work-section-card";
 import PortfolioImage from "@/assets/portfolio-screenshot.jpg";
 import SanazImage from "@/assets/sanaz-image.png";
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
+import AutoScroll from 'embla-carousel-auto-scroll'
+import HexagonPlate from "@/components/hexagon-plate";
+import "@/my-css.css";
 
 const HomePage = () => {
     const { theme } = useTheme();
@@ -54,7 +58,7 @@ const HomePage = () => {
     }
 
     const AboutSection = () => {
-        return (<section id="about" className="main-section lg:mt-[20vh] xl:mt-[10vh]">
+        return (<section id="about" className="main-section lg:mt-[20vh] xl:mt-0">
             <div data-aos="fade-up" className="section-title">About Me 💭</div>
             <div className="flex flex-col items-center lg:flex-row lg:justify-center gap-10 w-[80vw]">
                 <div className="flex flex-col h-[80%] justify-between gap-10">
@@ -108,6 +112,50 @@ const HomePage = () => {
         </section>)
     }
 
+    const TechnologiesSection = () => {
+        const hexagonsContent = [
+            <div>0</div>,
+            <div>1</div>,
+            <div>1</div>,
+            <div>1</div>,
+            <div>1</div>,
+            <div>1</div>,
+            <div>1</div>,
+            <div>1</div>,
+        ]
+
+        return <section id="technologies" className="main-section mt-[30vh]">
+            <div className="section-title" data-aos="fade-up">Technologies 💻</div>
+            <div className="w-350 items-center  flex">
+                {hexagonsContent.map((x, i) => renderHexagon(i, x, hexagonsContent))}
+            </div>
+        </section>
+    }
+
+    const renderHexagon = (i: number, thisContent: JSX.Element, contentsArray: JSX.Element[]) => {
+        // Only process even indices to form pairs
+        if (i % 2 !== 0) return null; // Skip odd indices as they'll be handled by the even index before them
+
+        var nextItem = contentsArray[i + 1];
+
+        if (nextItem) {
+            // Render two hexagons side-by-side
+            return (
+                <div key={i} className="w-min">
+                    <HexagonPlate>{thisContent}</HexagonPlate>
+                    <HexagonPlate className="translate-x-24">{nextItem}</HexagonPlate>
+                </div>
+            );
+        } else {
+            // If there's an odd number of items, render the last one alone
+            return (
+                <div key={i} className="w-min -translate-y-20">
+                    <HexagonPlate>{thisContent}</HexagonPlate>
+                </div>
+            );
+        }
+    }
+
     const WorkSection = () => {
         const breakpoint = useBreakpoint();
         const OPTIONS: EmblaOptionsType = { loop: true }
@@ -151,8 +199,8 @@ const HomePage = () => {
             />
         }]
 
-        return (<section id="work" className="main-section lg:mt-[20vh] xl:mt-[30vh]">
-            <div className="section-title">Work 💻</div>
+        return (<section id="work" className="main-section lg:mt-[20vh] xl:mt-[30vh]" data-aos="fade-up">
+            <div className="section-title" data-aos="fade-up">Work 💻</div>
             {breakpoint == 'xl'
                 ? <EmblaCarousel slides={SLIDES.concat(EMPTY_SLIDES)} options={OPTIONS} />
                 : <WorkCarouselMobile slides={SLIDES} />}
@@ -166,6 +214,7 @@ const HomePage = () => {
             <HeroSection />
             <AboutSection />
             <EducationSection />
+            <TechnologiesSection />
             <WorkSection />
             <section className="h-screen"></section>
         </div>

@@ -1,0 +1,20 @@
+/* .hover\:hexagon-animation:hover {
+    animation: animate-hexagon 1.9s infinite alternate
+} */
+
+
+.hexagon-wrapper {
+  clip-path: polygon(
+    25% 0%, 75% 0%,
+    100% 50%, 75% 100%,
+    25% 100%, 0% 50%
+  );
+}
+
+.hexagon-inner {
+  clip-path: inherit;
+}
+
+.hexagon-content {
+  clip-path: inherit;
+}

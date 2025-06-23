@@ -220,6 +220,10 @@ body {
   display: inline-block;
 }
 
+@utility pointer-events-all {
+  pointer-events: all;
+}
+
 @utility custom-card-shadow {
   @apply shadow-[0px_0px_40px_rgba(23,_103,_255,_0.3)]
 }

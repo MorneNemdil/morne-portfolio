@@ -159,7 +159,7 @@ const HomePage = () => {
             <img src={VercelLogo} className="scale-[70%] -translate-y-[17%] bg-white rounded-full p-1" />,
             <img src={GitHubLogo} className="scale-[70%] -translate-y-[17%]  bg-white rounded-full p-1 pt-0.5 pb-1.5" />,
             <img src={NodeJsLogo} className="scale-[70%] -translate-y-[17%] rounded-2xl" />,
-            <div></div>,
+            <div>dd</div>,
             <div></div>,
         ]
 

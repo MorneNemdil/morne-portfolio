@@ -36,6 +36,7 @@ const Header = () => {
         { name: 'artwork', displayName: "Education", scrollFunc: breakpoint == 'sm' ? scrollToSectionTop : scrollToSectionMiddle },
         { name: 'fashion', displayName: "Work", scrollFunc: scrollToSectionMiddle },
         { name: 'technologies', displayName: "Technologies", scrollFunc: scrollToSectionMiddle },
+        { name: 'pricing', displayName: "Pricing", scrollFunc: scrollToSectionMiddle },
         { name: 'contact', displayName: "Contact", scrollFunc: () => { } },
     ];
 
@@ -46,7 +47,7 @@ const Header = () => {
                 <div className="flex gap-3 items-center">
                     <div className="flex gap-3 items-center font-semibold text-l">
                         {navlinks.filter(x => x.name !== 'home')
-                            .map(navlink => <div onClick={() => navlink.scrollFunc(navlink.name)} className="header-link">{navlink.displayName}</div>)}
+                            .map((navlink, i) => <div key={i} onClick={() => navlink.scrollFunc(navlink.name)} className="header-link">{navlink.displayName}</div>)}
                     </div>
                     <Button onClick={() => setTheme(theme == "light" ? "dark" : "light")}>
                         {theme == "light" ? <Moon /> : <Sun />}

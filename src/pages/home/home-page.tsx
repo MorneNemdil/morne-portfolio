@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn, scrollToSectionMiddle } from "@/lib/utils";
 import { ArrowDown } from "lucide-react";
-import { useEffect, useState, type JSX } from "react";
+import { type JSX } from "react";
 import EmblaCarousel from "@/components/embla-ui/embla-carousel";
 import type { EmblaOptionsType } from 'embla-carousel'
 import '@/embla.css';
@@ -16,10 +16,30 @@ import WorkCarouselMobile from "@/components/work-carousel-mobile";
 import WorkSectionCard from "@/components/work-section-card";
 import PortfolioImage from "@/assets/portfolio-screenshot.jpg";
 import SanazImage from "@/assets/sanaz-image.png";
-import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
-import AutoScroll from 'embla-carousel-auto-scroll'
 import HexagonPlate from "@/components/hexagon-plate";
 import "@/my-css.css";
+import ReactLogo from "@/assets/tech-logos/reactLogo.png";
+import TsLogo from "@/assets/tech-logos/typescript.png";
+import JsLogo from "@/assets/tech-logos/js.png";
+import ShadcnLogo from "@/assets/tech-logos/shadcn.png";
+import AppwriteLogo from "@/assets/tech-logos/appwrite.png";
+import CsharpLogo from "@/assets/tech-logos/c-sharp.png";
+import EfCoreLogo from "@/assets/tech-logos/ef-core.png";
+import GitLogo from "@/assets/tech-logos/git.png";
+import ForkLogo from "@/assets/tech-logos/fork.png";
+import JavaLogo from "@/assets/tech-logos/java.png";
+import MssmsLogo from "@/assets/tech-logos/mssms.png";
+import NodeJsLogo from "@/assets/tech-logos/nodejs.png"
+import PostgreSqlLogo from "@/assets/tech-logos/postgresql.png";
+import SqlLogo from "@/assets/tech-logos/sql.png"
+import TailwindLogo from "@/assets/tech-logos/tailwind.png"
+import CssLogo from "@/assets/tech-logos/css.png";
+import VsLogo from "@/assets/tech-logos/visualstudio.png";
+import ViteLogo from "@/assets/tech-logos/vite.png";
+import VsCodeLogo from "@/assets/tech-logos/vscode.png";
+import VercelLogo from "@/assets/tech-logos/vercel.png";
+import GitHubLogo from "@/assets/tech-logos/github.png";
+
 
 const HomePage = () => {
     const { theme } = useTheme();
@@ -114,20 +134,44 @@ const HomePage = () => {
 
     const TechnologiesSection = () => {
         const hexagonsContent = [
-            <div>0</div>,
-            <div>1</div>,
-            <div>1</div>,
-            <div>1</div>,
-            <div>1</div>,
-            <div>1</div>,
-            <div>1</div>,
-            <div>1</div>,
+            <img src={ReactLogo} className="scale-[80%] -translate-y-[10%]" />,
+            <img src={TsLogo} className="scale-[70%] -translate-y-[17%]" />,
+            <img src={JsLogo} className="scale-[70%] -translate-y-[17%] rounded-2xl" />,
+            <img src={ShadcnLogo} className="scale-[70%] -translate-y-[17%] rounded-2xl" />,
+            <img src={AppwriteLogo} className="scale-[70%] -translate-y-[17%]" />,
+            <img src={CsharpLogo} className="scale-[70%] -translate-y-[17%]" />,
+            <img src={EfCoreLogo} className="scale-[100%] rounded-2xl " />,
+            <img src={GitLogo} className="scale-[70%] -translate-y-[17%]" />,
+            <img src={ForkLogo} className="scale-[70%] -translate-y-[17%]" />,
+            <img src={JavaLogo} className="scale-[75%] -translate-y-[17%] rounded-full bg-white p-5" />,
+            <img src={MssmsLogo} />,
+            <div></div>,
+        ]
+
+        const hexagonsContent2 = [
+            <img src={PostgreSqlLogo} className="scale-[70%] -translate-y-[12%]" />,
+            <img src={SqlLogo} className="scale-[70%] -translate-y-[12%]" />,
+            <img src={VsCodeLogo} className="-translate-y-[14%] scale-[60%]" />,
+            <img src={TailwindLogo} className="-translate-y-[15%]" />,
+            <img src={CssLogo} className="scale-[80%] -translate-y-[15%]" />,
+            <img src={VsLogo} className="-translate-y-[12%] rounded-full bg-white scale-[75%] p-6" />,
+            <img src={ViteLogo} className="scale-[70%] -translate-y-[12%]" />,
+            <img src={VercelLogo} className="scale-[70%] -translate-y-[17%] bg-white rounded-full p-1" />,
+            <img src={GitHubLogo} className="scale-[70%] -translate-y-[17%]  bg-white rounded-full p-1 pt-0.5 pb-1.5" />,
+            <img src={NodeJsLogo} className="scale-[70%] -translate-y-[17%] rounded-2xl" />,
+            <div></div>,
+            <div></div>,
         ]
 
         return <section id="technologies" className="main-section mt-[30vh]">
             <div className="section-title" data-aos="fade-up">Technologies 💻</div>
-            <div className="w-350 items-center  flex">
-                {hexagonsContent.map((x, i) => renderHexagon(i, x, hexagonsContent))}
+            <div className="flex flex-col items-center w-full -translate-x-[2%]">
+                <div className="w-350 flex justify-center items-center">
+                    {hexagonsContent.map((x, i) => renderHexagon(i, x, hexagonsContent))}
+                </div>
+                <div className="w-350 flex justify-center items-center">
+                    {hexagonsContent2.map((x, i) => renderHexagon(i, x, hexagonsContent2))}
+                </div>
             </div>
         </section>
     }
@@ -143,13 +187,13 @@ const HomePage = () => {
             return (
                 <div key={i} className="w-min">
                     <HexagonPlate>{thisContent}</HexagonPlate>
-                    <HexagonPlate className="translate-x-24">{nextItem}</HexagonPlate>
+                    <HexagonPlate className="translate-x-[50%]">{nextItem}</HexagonPlate>
                 </div>
             );
         } else {
             // If there's an odd number of items, render the last one alone
             return (
-                <div key={i} className="w-min -translate-y-20">
+                <div key={i} className="w-min -translate-y-[50%]">
                     <HexagonPlate>{thisContent}</HexagonPlate>
                 </div>
             );

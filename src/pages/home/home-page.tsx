@@ -356,7 +356,9 @@ const HomePage = () => {
                                 />
                             </div>
                         </div>
-                        <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="500"><Button type="submit" className="w-full hover:cursor-pointer motion-preset-expand">Send Email</Button></div>
+                        <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="500">
+                            <Button type="submit" className="w-full hover:cursor-pointer motion-preset-expand">Send Email</Button>
+                        </div>
                     </form>
                 </Card>
             </div>

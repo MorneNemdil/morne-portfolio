@@ -92,7 +92,7 @@ const Header = () => {
                             <div className="flex flex-col gap-5 py-3">
                                 {navlinks.map(section => (
                                     <SheetClose asChild key={section.name}>
-                                        <div onClick={() => scroll} className={`text-lg font-semibold underline cursor-pointer`}>
+                                        <div onClick={() => scroll} className={`text-lg font-semibold text-gray-200 cursor-pointer`}>
                                             {section.displayName}
                                         </div>
                                     </SheetClose>

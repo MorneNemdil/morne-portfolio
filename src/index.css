@@ -198,6 +198,10 @@
   @apply font-extrabold text-4xl md:text-5xl 
 }
 
+@utility scale-on-hover {
+  @apply transition-transform duration-300 hover:scale-110;
+}
+
 body {
   letter-spacing: var(--tracking-normal);
 }

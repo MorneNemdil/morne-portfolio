@@ -54,10 +54,10 @@ const HomePage = () => {
 
     const typewriterText = "I'm a ";
     const typewriterSegments: TypeWriterSegmentProps[] = [
-        { text: "Developer", colourClass: "text-blue-500" },
-        { text: "Team Leader", colourClass: "text-blue-500" },
-        { text: "Designer", colourClass: "text-blue-500" },
-        { text: "Solver", colourClass: "text-blue-500" },
+        { text: "Developer", colourClass: theme == 'light' ? "text-sky-400" : "text-blue-500" },
+        { text: "Team Leader", colourClass: theme == 'light' ? "text-sky-400" : "text-blue-500" },
+        { text: "Designer", colourClass: theme == 'light' ? "text-sky-400" : "text-blue-500" },
+        { text: "Solver", colourClass: theme == 'light' ? "text-sky-400" : "text-blue-500" },
     ];
 
     const heroTitleSize = "text-3xl sm:text-5xl md:text-6xl";
@@ -68,7 +68,7 @@ const HomePage = () => {
             <div className="text-start w-95 sm:w-130 md:w-170 lg:w-220 xl:w-270 flex flex-col gap-5">
                 <div data-aos="fade-up" data-aos-duration={600}>
                     <div className={`${heroTitleSize} flex font-extrabold`}>
-                        <div>Hi,&nbsp;</div><div className="text-purple-500">I'm Morné&nbsp;</div><span className="waving-hand">👋</span>
+                        <div>Hi,&nbsp;</div><div className={`${theme == 'light' ? "text-blue-500" : "text-purple-500"}`}>I'm Morné&nbsp;</div><span className="waving-hand">👋</span>
                     </div>
                 </div>
                 <div className="ml-1">
@@ -80,7 +80,7 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
-            <ArrowDown className="mt-[10vh] border border-purple-300 rounded-full p-1.5 animate-bounce hover:cursor-pointer" onClick={() => scrollToSectionMiddle("about")} size={48} />
+            <ArrowDown className={`mt-[10vh] border ${theme == 'dark' ? "border-purple-300" : "border-blue-200"} border-2 rounded-full p-1.5 animate-bounce hover:cursor-pointer`} onClick={() => scrollToSectionMiddle("about")} size={48} />
         </section>)
     }
 

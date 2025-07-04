@@ -39,6 +39,9 @@ import ViteLogo from "@/assets/tech-logos/vite.png";
 import VsCodeLogo from "@/assets/tech-logos/vscode.png";
 import VercelLogo from "@/assets/tech-logos/vercel.png";
 import GitHubLogo from "@/assets/tech-logos/github.png";
+import PricingCard1 from "@/components/pricing-cards/pricing-card-1";
+import PricingCard2 from "@/components/pricing-cards/pricing-card-2";
+import PricingCard3 from "@/components/pricing-cards/pricing-card-3";
 
 
 const HomePage = () => {
@@ -186,15 +189,15 @@ const HomePage = () => {
             // Render two hexagons side-by-side
             return (
                 <div key={i} className="w-min">
-                    <HexagonPlate>{thisContent}</HexagonPlate>
-                    <HexagonPlate className="translate-x-[50%]">{nextItem}</HexagonPlate>
+                    <HexagonPlate className="scale-on-hover">{thisContent}</HexagonPlate>
+                    <HexagonPlate className="scale-on-hover translate-x-[50%]">{nextItem}</HexagonPlate>
                 </div>
             );
         } else {
             // If there's an odd number of items, render the last one alone
             return (
                 <div key={i} className="w-min -translate-y-[50%]">
-                    <HexagonPlate>{thisContent}</HexagonPlate>
+                    <HexagonPlate className="scale-on-hover">{thisContent}</HexagonPlate>
                 </div>
             );
         }
@@ -252,20 +255,25 @@ const HomePage = () => {
     }
 
     const PricingSection = () => {
-        return <section id="pricing" className="main-section lg:mt-[20vh] xl:mt-[30vh]" >
+        return <section id="pricing" className="main-section mt-[15vh] lg:mt-[20vh] xl:mt-[30vh]" >
             <div className="section-title" data-aos="fade-up">Pricing 🏷️</div>
-            <div className="flex justify-center">
-                <Card>
-                    
-                </Card>
-            </div>
+            {breakpoint == 'md'
+                ? <div className={`flex gap-15 flex-col md:flex-row`}>
+                    <div data-aos="fade-right" data-aos-delay={100}><PricingCard1 /></div>
+                    <div data-aos="fade-left" data-aos-delay={100}><PricingCard2 /></div>
+                    <div data-aos="fade-right" data-aos-delay={100}><PricingCard3 /></div>
+                </div>
+                : <div className={`flex gap-15 flex-col md:flex-row`}>
+                    <div data-aos="fade-up"><PricingCard1 /></div>
+                    <div data-aos="fade-up" data-aos-delay={200}><PricingCard2 /></div>
+                    <div data-aos="fade-up" data-aos-delay={400}><PricingCard3 /></div>
+                </div>}
         </section>
     }
 
     const ContactSection = () => {
         return <section id="contact" className="main-section lg:mt-[20vh] xl:mt-[40vh]">
             <div className="section-title" data-aos="fade-up">Contact 🤝</div>
-            
         </section>
     }
 

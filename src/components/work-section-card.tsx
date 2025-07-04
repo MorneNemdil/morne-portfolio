@@ -15,7 +15,7 @@ const WorkSectionCard = ({ title, description, image, siteLink }: WorkSectionCar
     return (
         <div className="flex flex-col justify-between h-full items-center">
             <div className="flex flex-col items-center gap-3">
-                <div className={"text-2xl".concat(theme == 'dark' ? ' text-purple-400' : ' text-blue-400')}>{title}</div>
+                <div className={"text-2xl text-center".concat(theme == 'dark' ? ' text-purple-400' : ' text-blue-400')}>{title}</div>
                 <div className="text-center">{description}</div>
             </div>
             {image

@@ -33,21 +33,40 @@ const Header = () => {
     const navlinks = [
         { name: 'home', displayName: "Home", scrollFunc: breakpoint == 'sm' ? scrollToSectionTop : scrollToSectionMiddle },
         { name: 'about', displayName: "About", scrollFunc: breakpoint == 'sm' ? scrollToSectionTop : scrollToSectionMiddle },
-        { name: 'artwork', displayName: "Education", scrollFunc: breakpoint == 'sm' ? scrollToSectionTop : scrollToSectionMiddle },
-        { name: 'fashion', displayName: "Work", scrollFunc: scrollToSectionMiddle },
+        { name: 'education', displayName: "Education", scrollFunc: breakpoint == 'sm' ? scrollToSectionTop : scrollToSectionMiddle },
         { name: 'technologies', displayName: "Technologies", scrollFunc: scrollToSectionMiddle },
+        { name: 'work', displayName: "Work", scrollFunc: scrollToSectionMiddle },
         { name: 'pricing', displayName: "Pricing", scrollFunc: scrollToSectionMiddle },
-        { name: 'contact', displayName: "Contact", scrollFunc: () => { } },
+        { name: 'contact', displayName: "Contact", scrollFunc: scrollToSectionMiddle },
     ];
 
     const DesktopHeader = () => {
         return <Card className="bg-white m-3 text-gray-500 p-5 w-full">
             <div className="flex justify-between">
-                <div className="flex items-center ml-2 header-link" onClick={() => scrollToSectionMiddle("hero")}>Logo</div>
+                <div
+                    className="flex items-center ml-2 header-link"
+                    onClick={async () => {
+                        scrollToSectionMiddle("hero");
+                        await setTimeout(() => setIsVisible(false), 900);
+                    }}
+                >
+                    Logo
+                </div>
                 <div className="flex gap-3 items-center">
                     <div className="flex gap-3 items-center font-semibold text-l">
                         {navlinks.filter(x => x.name !== 'home')
-                            .map((navlink, i) => <div key={i} onClick={() => navlink.scrollFunc(navlink.name)} className="header-link">{navlink.displayName}</div>)}
+                            .map((navlink, i) =>
+                                <div
+                                    key={i}
+                                    onClick={async () => {
+                                        navlink.scrollFunc(navlink.name);
+                                        await setTimeout(() => setIsVisible(false), 900);
+                                    }}
+                                    className="header-link"
+                                >
+                                    {navlink.displayName}
+                                </div>
+                            )}
                     </div>
                     <Button onClick={() => setTheme(theme == "light" ? "dark" : "light")}>
                         {theme == "light" ? <Moon /> : <Sun />}

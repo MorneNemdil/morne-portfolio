@@ -163,13 +163,13 @@ const HomePage = () => {
             <div></div>,
         ]
 
-        return <section id="technologies" className="main-section mt-[30vh]">
-            <div className="section-title" data-aos="fade-up">Technologies 💻</div>
-            <div className="flex flex-col items-center w-full -translate-x-[2%]">
-                <div className="w-350 flex justify-center items-center">
+        return <section id="technologies" className="main-section !h-[70vh] mt-[10vh] lg:mt-[20vh] xl:mt-[30vh]">
+            <div className="section-title" data-aos="fade-up">Technologies 🤖</div>
+            <div className="flex flex-col items-center -translate-x-[2%] mr-4">
+                <div className="w-full flex justify-center items-center">
                     {hexagonsContent.map((x, i) => renderHexagon(i, x, hexagonsContent))}
                 </div>
-                <div className="w-350 flex justify-center items-center">
+                <div className="w-full flex justify-center items-center">
                     {hexagonsContent2.map((x, i) => renderHexagon(i, x, hexagonsContent2))}
                 </div>
             </div>
@@ -243,12 +243,30 @@ const HomePage = () => {
             />
         }]
 
-        return (<section id="work" className="main-section lg:mt-[20vh] xl:mt-[30vh]" data-aos="fade-up">
+        return (<section id="work" className="main-section lg:mt-[20vh] xl:mt-[40vh]">
             <div className="section-title" data-aos="fade-up">Work 💻</div>
             {breakpoint == 'xl'
                 ? <EmblaCarousel slides={SLIDES.concat(EMPTY_SLIDES)} options={OPTIONS} />
                 : <WorkCarouselMobile slides={SLIDES} />}
         </section>)
+    }
+
+    const PricingSection = () => {
+        return <section id="pricing" className="main-section lg:mt-[20vh] xl:mt-[30vh]" >
+            <div className="section-title" data-aos="fade-up">Pricing 🏷️</div>
+            <div className="flex justify-center">
+                <Card>
+                    
+                </Card>
+            </div>
+        </section>
+    }
+
+    const ContactSection = () => {
+        return <section id="contact" className="main-section lg:mt-[20vh] xl:mt-[40vh]">
+            <div className="section-title" data-aos="fade-up">Contact 🤝</div>
+            
+        </section>
     }
 
     return (
@@ -260,6 +278,8 @@ const HomePage = () => {
             <EducationSection />
             <TechnologiesSection />
             <WorkSection />
+            <PricingSection />
+            <ContactSection />
             <section className="h-screen"></section>
         </div>
     )

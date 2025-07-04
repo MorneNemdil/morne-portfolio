@@ -1,8 +1,13 @@
 import { Check, X } from "lucide-react"
 import { Card } from "../ui/card"
 import { Separator } from "../ui/separator"
+import { Button } from "../ui/button"
+import { scrollToSectionMiddle } from "@/lib/utils"
+import { useTheme } from "../theme-provider"
 
 const PricingCard2 = () => {
+    const { theme } = useTheme();
+
     return (
         <div className="flex justify-center scale-on-hover">
             <Card className="p-7 md:w-xs">
@@ -12,15 +17,15 @@ const PricingCard2 = () => {
                 </div>
                 <Separator />
                 <div className="flex gap-3">
-                    <Check className="border rounded-full border-purple-400 p-1 scale-110" />
+                    <Check className={`border rounded-full ${theme == 'light' ? 'border-blue-400' : 'border-purple-400'} p-1 scale-110`} />
                     <div>Mobile friendly</div>
                 </div>
                 <div className="flex gap-3">
-                    <Check className="border rounded-full border-purple-400 p-1 scale-110" />
+                    <Check className={`border rounded-full ${theme == 'light' ? 'border-blue-400' : 'border-purple-400'} p-1 scale-110`} />
                     <div>Single page</div>
                 </div>
                 <div className="flex gap-3">
-                    <Check className="border rounded-full border-purple-400 p-1 scale-110" />
+                    <Check className={`border rounded-full ${theme == 'light' ? 'border-blue-400' : 'border-purple-400'} p-1 scale-110`} />
                     <div>Upgrade to 3 pages</div>
                 </div>
                 <div className="hidden md:flex gap-3 text-gray-400">
@@ -28,7 +33,7 @@ const PricingCard2 = () => {
                     <div>Upgrade up to 5 pages</div>
                 </div>
                 <div className="flex gap-3">
-                    <Check className="border rounded-full border-purple-400 p-1 scale-110" />
+                    <Check className={`border rounded-full ${theme == 'light' ? 'border-blue-400' : 'border-purple-400'} p-1 scale-110`} />
                     <div>Light animations</div>
                 </div>
                 <div className="hidden md:flex gap-3 text-gray-400">
@@ -39,6 +44,7 @@ const PricingCard2 = () => {
                     <X className="border rounded-full border-gray-400 p-1 scale-110" />
                     <div>Authentication</div>
                 </div>
+                <Button onClick={() => scrollToSectionMiddle("contact")}>Get Started</Button>
             </Card>
         </div>
     )

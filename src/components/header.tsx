@@ -52,7 +52,7 @@ const Header = () => {
                 >
                     Logo
                 </div>
-                <div className="flex gap-3 items-center">
+                <div className="flex gap-6 items-center">
                     <div className="flex gap-3 items-center font-semibold text-l">
                         {navlinks.filter(x => x.name !== 'home')
                             .map((navlink, i) =>

@@ -5,7 +5,7 @@ import TypewriterText, { type TypeWriterSegmentProps } from "@/components/typewr
 import TempImage from "@/assets/bluePic.avif";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { cn, scrollToSectionMiddle } from "@/lib/utils";
+import { cn, isNullOrEmpty, scrollToSectionMiddle } from "@/lib/utils";
 import { ArrowDown } from "lucide-react";
 import { type JSX } from "react";
 import EmblaCarousel from "@/components/embla-ui/embla-carousel";
@@ -42,6 +42,10 @@ import GitHubLogo from "@/assets/tech-logos/github.png";
 import PricingCard1 from "@/components/pricing-cards/pricing-card-1";
 import PricingCard2 from "@/components/pricing-cards/pricing-card-2";
 import PricingCard3 from "@/components/pricing-cards/pricing-card-3";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { toast } from "sonner";
 
 
 const HomePage = () => {
@@ -96,7 +100,7 @@ const HomePage = () => {
                         <div>I’m constantly learning and enjoy keeping up with the latest web trends and technologies. Whether collaborating with a team or working independently, I bring attention to detail, problem-solving skills, and a drive for clean, maintainable code to every project I take on.</div>
                         <div className="flex flex-wrap items-baseline">
                             <div
-                                className={`font-bold ${breakpoint == 'md' ? 'text-gray-500 hover:cursor-pointer transition-all duration-700 hover:text-pink-500 hover:shadow-2xl hover:-rotate-2 hover:text-[26px]' : 'text-pink-500'} inline-block`}
+                                className={`font-bold ${breakpoint >= 'md' ? 'text-gray-500 hover:cursor-pointer transition-all duration-700 hover:text-pink-500 hover:shadow-2xl hover:-rotate-2 hover:text-[26px]' : 'text-pink-500'} inline-block`}
                                 onClick={() => scrollToSectionMiddle("contact")}>
                                 Get in touch&nbsp;
                             </div>
@@ -255,7 +259,7 @@ const HomePage = () => {
     }
 
     const PricingSection = () => {
-        return <section id="pricing" className="main-section mt-[15vh] lg:mt-[20vh] xl:mt-[30vh]" >
+        return <section id="pricing" className="main-section mt-[10vh] lg:mt-[20vh] xl:mt-[30vh]" >
             <div className="section-title" data-aos="fade-up">Pricing 🏷️</div>
             {breakpoint == 'md'
                 ? <div className={`flex gap-15 flex-col md:flex-row`}>
@@ -272,8 +276,90 @@ const HomePage = () => {
     }
 
     const ContactSection = () => {
-        return <section id="contact" className="main-section lg:mt-[20vh] xl:mt-[40vh]">
+        const onSendEmail = async (event: any) => {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const formDataObject = Object.fromEntries(formData.entries());
+
+            for (const key in formDataObject) {
+                const value = formDataObject[key];
+                if (typeof value == 'string' && key !== 'phoneNumber' && isNullOrEmpty(value)) {
+                    toast.error("All required fields must be completed")
+                    return;
+                }
+            }
+
+            const sendEmailPromise = new Promise(async (resolve, reject) => {
+                try {
+                    const response = await fetch('/api/send-email', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formDataObject),
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok && data.message) {
+                        console.log('Successfully sent email', data.message);
+                        event.target.reset();
+                        resolve('success');
+                    } else {
+                        console.error('Error sending email:', data);
+                        reject();
+                    }
+                } catch (error) {
+                    console.error('Error sending email:', error);
+                    reject();
+                }
+            });
+
+            toast.promise(sendEmailPromise, {
+                loading: 'Sending ...',
+                success: () => 'Email sent successfully!',
+                error: () => 'A problem occured while sending the email. If this persists, please contact me via email or instagram.'
+            });
+        }
+
+        return <section id="contact" className="main-section mt-[20vh] lg:mt-[20vh] xl:mt-[30vh]">
             <div className="section-title" data-aos="fade-up">Contact 🤝</div>
+            <div className="flex justify-center items-center">
+                <Card data-aos="flip-left" data-aos-duration="1000">
+                    <form className="flex flex-col gap-3" onSubmit={onSendEmail}>
+                        <div
+                            className="flex gap-4
+                                    max-sm:flex-col
+                                    min-md:flex-row min-md:h-[25vh]"
+                        >
+                            <input type="hidden" name="access_key" value="7c5bce80-6a0c-470b-b5ca-4895f04e1ef1"></input>
+                            <div className="flex flex-col justify-between">
+                                <div className="flex flex-col gap-2 min-md:w-[18vw] max-sm:w-full" data-aos="fade-right" data-aos-delay="300">
+                                    <Label className="ml-1">Full Name</Label>
+                                    <Input type="text" placeholder="Full Name" name="fullName" />
+                                </div>
+                                <div className="flex flex-col gap-2 min-md:w-[18vw] max-sm:w-full" data-aos="fade-right" data-aos-delay="400">
+                                    <Label className="ml-1">Email</Label>
+                                    <Input type="email" placeholder="Email" name="email" />
+                                </div>
+                                <div className="flex flex-col gap-2 min-md:w-[18vw] max-sm:w-full" data-aos="fade-right" data-aos-delay="500">
+                                    <Label className="ml-1">Phone Number (optional)</Label>
+                                    <Input type="tel" placeholder="Phone Number" name="phoneNumber" />
+                                </div>
+                            </div>
+                            <div className="!flex flex-col gap-2 min-md:w-[30vw] max-sm:w-full" data-aos="fade-left" data-aos-delay="400">
+                                <Label className="ml-1">Message</Label>
+                                <Textarea
+                                    placeholder="Message"
+                                    className="!h-[86%] overflow-y-auto resize-none"
+                                    name="message"
+                                />
+                            </div>
+                        </div>
+                        <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="500"><Button type="submit" className="w-full hover:cursor-pointer motion-preset-expand">Send Email</Button></div>
+                    </form>
+                </Card>
+            </div>
         </section>
     }
 
@@ -288,7 +374,7 @@ const HomePage = () => {
             <WorkSection />
             <PricingSection />
             <ContactSection />
-            <section className="h-screen"></section>
+            <div className="h-[12vh]" />
         </div>
     )
 }

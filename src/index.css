@@ -199,7 +199,7 @@
 }
 
 @utility scale-on-hover {
-  @apply transition-transform duration-300 hover:scale-110;
+  @apply transition-transform duration-300 hover:scale-105;
 }
 
 body {

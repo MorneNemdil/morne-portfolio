@@ -13,7 +13,7 @@ export default async (req, res) => {
         formData.append('name', fullName);
         formData.append('email', email);
         formData.append('phone', phoneNumber || '');
-        formData.append('message', message);
+        formData.append('message', `Origin: ${process.env.SITE_NAME} \n` (message));
 
         try {
             const response = await fetch('https://api.web3forms.com/submit', {

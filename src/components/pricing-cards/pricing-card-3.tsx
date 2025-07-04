@@ -38,7 +38,7 @@ const PricingCard3 = () => {
                 </div>
                 <div className="flex gap-3">
                     <Check className={`border rounded-full ${theme == 'light' ? 'border-blue-400' : 'border-purple-400'} p-1 scale-110`} />
-                    <div>Backend Database</div>
+                    <div>Backend database</div>
                 </div>
                 <div className="flex gap-3">
                     <Check className={`border rounded-full ${theme == 'light' ? 'border-blue-400' : 'border-purple-400'} p-1 scale-110`} />

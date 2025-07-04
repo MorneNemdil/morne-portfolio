@@ -1,7 +1,10 @@
 export default async (req, res) => {
+    console.log("Send Email Function Found!")
     if (req.method === 'POST') {
         const { fullName, email, phoneNumber, message } = req.body;
         const accessKey = process.env.MORNE_EMAIL_ACCESS_KEY;
+        const siteName = process.env.SITE_NAME;
+        const fixedMessage = `Origin: ${siteName} \n Message: ${message}`;
 
         if (!accessKey) {
             console.error('Email Access Key not found in environment variables.');
@@ -13,7 +16,7 @@ export default async (req, res) => {
         formData.append('name', fullName);
         formData.append('email', email);
         formData.append('phone', phoneNumber || '');
-        formData.append('message', `Origin: ${process.env.SITE_NAME} \n` (message));
+        formData.append('message', fixedMessage);
 
         try {
             const response = await fetch('https://api.web3forms.com/submit', {

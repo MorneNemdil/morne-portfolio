@@ -113,7 +113,7 @@ const HomePage = () => {
     }
 
     const EducationSection = () => {
-        return (<section id="education" className="main-section">
+        return (<section id="education" className="main-section xl:my-70 2xl:my-0">
             <div className="section-title" data-aos="fade-up">Education 🎓</div>
             <div className="flex flex-col 2xl:flex-row w-full 2xl:w-[60vw] justify-center items-center gap-10 text-lg font-semibold md:font-normal sm:text-xl md:text-2xl">
                 <Card data-aos="fade-right" className={cn("flex flex-col items-center w-[75%] 2xl:w-1/2 gap-5 h-full transition-all")}>

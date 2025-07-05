@@ -307,7 +307,7 @@ const HomePage = () => {
     }
 
     const PricingSection = () => {
-        return <section id="pricing" className="main-section" >
+        return <section id="pricing" className="main-section mt-60 lg:mt-0" >
             <div className="section-title" data-aos="fade-up">Pricing 🏷️</div>
             {breakpoint == 'md'
                 ? <div className={`flex gap-15 flex-col md:flex-row`}>
@@ -370,7 +370,7 @@ const HomePage = () => {
             });
         }
 
-        return <section id="contact" className="main-section !mt-50 lg:!mt-40">
+        return <section id="contact" className="main-section !mt-60 lg:!mt-40">
             <div className="section-title" data-aos="fade-up">Contact 🤝</div>
             <div className="flex justify-center items-center">
                 <Card data-aos="flip-left" data-aos-duration="1000">

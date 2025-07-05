@@ -56,7 +56,7 @@ const Header = () => {
                         await setTimeout(() => setIsVisible(false), 900);
                     }}
                 >
-                    <SiteLogo /><div className="logo-font">Morne Nemdil</div>
+                    <SiteLogo /><div className="logo-font w-full">Morne Nemdil</div>
                 </div>
                 <div className="flex gap-6 items-center">
                     <div className="flex gap-3 items-center font-semibold text-l">

@@ -56,7 +56,7 @@ const Header = () => {
                         await setTimeout(() => setIsVisible(false), 900);
                     }}
                 >
-                    <SiteLogo /><div className="logo-font w-full">Morne Nemdil</div>
+                    <SiteLogo /><div className="logo-font w-[140px]">Morne Nemdil</div>
                 </div>
                 <div className="flex gap-6 items-center">
                     <div className="flex gap-3 items-center font-semibold text-l">
@@ -96,14 +96,20 @@ const Header = () => {
                                 Navigate to different sections here!
                             </SheetDescription>
                             <div className="flex flex-col gap-5 py-3">
-                                {navlinks.map(section => (
-                                    <SheetClose asChild key={section.name}>
-                                        <div onClick={() => scroll} className={`text-lg font-semibold text-gray-200 cursor-pointer`}>
-                                            {section.displayName}
+                                {navlinks.map(link => (
+                                    <SheetClose asChild key={link.name}>
+                                        <div onClick={async () => {
+                                            link.scrollFunc(link.name);
+                                            await setTimeout(() => setIsVisible(false), 900);
+                                        }} className={`text-lg font-semibold cursor-pointer`}>
+                                            {link.displayName}
                                         </div>
                                     </SheetClose>
                                 ))}
                             </div>
+                            <Button className="" onClick={() => setTheme(theme == "light" ? "dark" : "light")}>
+                                {theme == "light" ? <Moon /> : <Sun />}
+                            </Button>
                         </SheetHeader>
                     </SheetContent>
                 </Sheet>

@@ -43,9 +43,7 @@ const Header = () => {
     ];
 
     const SiteLogo = () => {
-        return (
-            <img className="w-[2.5vw] h-[2.3vw] rounded-full" src={MorneLogo} />
-        )
+        return <img className="w-[2.5vw] h-[2.3vw] rounded-full" src={MorneLogo} />
     }
 
     const DesktopHeader = () => {

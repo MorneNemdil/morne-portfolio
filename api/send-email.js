@@ -1,5 +1,4 @@
 export default async (req, res) => {
-    console.log("Send Email Function Found!")
     if (req.method === 'POST') {
         const { fullName, email, phoneNumber, message } = req.body;
         const accessKey = process.env.MORNE_EMAIL_ACCESS_KEY;

@@ -374,14 +374,14 @@ const HomePage = () => {
             <div className="section-title" data-aos="fade-up">Contact 🤝</div>
             <div className="flex justify-center items-center">
                 <Card data-aos="flip-left" data-aos-duration="1000">
-                    <form className="flex flex-col gap-3" onSubmit={onSendEmail}>
+                    <form className="flex flex-col gap-6 h-min" onSubmit={onSendEmail}>
                         <div
-                            className="flex gap-4
-                                    max-sm:flex-col
-                                    min-md:flex-row min-md:h-[25vh]"
+                            className="flex flex-wrap gap-4
+                                max-sm:flex-col
+                                min-md:flex-row min-md:h-auto"
                         >
                             <input type="hidden" name="access_key" value="7c5bce80-6a0c-470b-b5ca-4895f04e1ef1"></input>
-                            <div className="flex flex-col justify-between">
+                            <div className="flex flex-col justify-between gap-3">
                                 <div className="flex flex-col gap-2 min-md:w-[18vw] max-sm:w-full" data-aos="fade-right" data-aos-delay="300">
                                     <Label className="ml-1">Full Name</Label>
                                     <Input type="text" placeholder="Full Name" name="fullName" />
@@ -399,12 +399,12 @@ const HomePage = () => {
                                 <Label className="ml-1">Message</Label>
                                 <Textarea
                                     placeholder="Message"
-                                    className="!h-[86%] overflow-y-auto resize-none"
+                                    className="!h-[90%] overflow-y-auto resize-none"
                                     name="message"
                                 />
                             </div>
                         </div>
-                        <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="500">
+                        <div className="mt-1" data-aos="fade-up" data-aos-duration="600" data-aos-delay="500">
                             <Button type="submit" className="w-full hover:cursor-pointer motion-preset-expand">Send Email</Button>
                         </div>
                     </form>

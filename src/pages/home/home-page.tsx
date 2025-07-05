@@ -64,7 +64,7 @@ const HomePage = () => {
     const heroDescriptionSize = "text-xl sm:text-2xl md:text-3xl";
 
     const HeroSection = () => {
-        return (<section id="hero" className="main-section lg:mt-[20vh]">
+        return (<section id="hero" className="main-section mt-[200px]">
             <div className="text-start w-95 sm:w-130 md:w-170 lg:w-220 xl:w-270 flex flex-col gap-5">
                 <div data-aos="fade-up" data-aos-duration={600}>
                     <div className={`${heroTitleSize} flex font-extrabold`}>
@@ -85,7 +85,7 @@ const HomePage = () => {
     }
 
     const AboutSection = () => {
-        return (<section id="about" className="main-section lg:mt-[20vh] xl:mt-0">
+        return (<section id="about" className="main-section">
             <div data-aos="fade-up" className="section-title">About Me 💭</div>
             <div className="flex flex-col items-center lg:flex-row lg:justify-center gap-10 w-[80vw]">
                 <div className="flex flex-col h-[80%] justify-between gap-10">
@@ -113,7 +113,7 @@ const HomePage = () => {
     }
 
     const EducationSection = () => {
-        return (<section id="education" className="main-section mt-[40vh] lg:mt-[20vh] xl:mt-[10vh]">
+        return (<section id="education" className="main-section">
             <div className="section-title" data-aos="fade-up">Education 🎓</div>
             <div className="flex flex-col 2xl:flex-row w-full 2xl:w-[60vw] justify-center items-center gap-10 text-lg font-semibold md:font-normal sm:text-xl md:text-2xl">
                 <Card data-aos="fade-right" className={cn("flex flex-col items-center w-[75%] 2xl:w-1/2 gap-5 h-full transition-all")}>
@@ -207,8 +207,8 @@ const HomePage = () => {
             ],
         ];
 
-        return (            
-            <section id="technologies" className="main-section  !h-[130vh] lg:!h-[70vh] mt-[10vh] lg:mt-[20vh] xl:mt-[30vh]">
+        return (
+            <section id="technologies" className="main-section my-55">
                 <div className="section-title" data-aos="fade-up">Technologies 🤖</div>
                 <div className="flex flex-col items-center -translate-x-[2%] mr-4">
                     {!isMobile
@@ -298,7 +298,7 @@ const HomePage = () => {
             />
         }]
 
-        return (<section id="work" className="main-section !h-[50vh] md:!h-[90vh] mt-[10vh] sm:mt-[40vh] md:mt-[15vh] lg:mt-[20vh] xl:mt-[40vh]">
+        return (<section id="work" className="main-section my-80">
             <div className="section-title" data-aos="fade-up">Work 💻</div>
             {breakpoint == 'xl'
                 ? <EmblaCarousel slides={SLIDES.concat(EMPTY_SLIDES)} options={OPTIONS} />
@@ -307,7 +307,7 @@ const HomePage = () => {
     }
 
     const PricingSection = () => {
-        return <section id="pricing" className="main-section mt-[70vh] lg:mt-[20vh] xl:mt-[30vh]" >
+        return <section id="pricing" className="main-section" >
             <div className="section-title" data-aos="fade-up">Pricing 🏷️</div>
             {breakpoint == 'md'
                 ? <div className={`flex gap-15 flex-col md:flex-row`}>
@@ -370,7 +370,7 @@ const HomePage = () => {
             });
         }
 
-        return <section id="contact" className="main-section mt-[20vh] lg:mt-[20vh] xl:mt-[30vh]">
+        return <section id="contact" className="main-section !mt-40">
             <div className="section-title" data-aos="fade-up">Contact 🤝</div>
             <div className="flex justify-center items-center">
                 <Card data-aos="flip-left" data-aos-duration="1000">
@@ -414,7 +414,7 @@ const HomePage = () => {
     }
 
     return (
-        <div>
+        <div className="">
             {theme == 'dark' && <StarBackground />}
             <Header />
             <HeroSection />
@@ -424,7 +424,7 @@ const HomePage = () => {
             <WorkSection />
             <PricingSection />
             <ContactSection />
-            <div className="h-[12vh]" />
+            <div className="h-[20px]" />
         </div>
     )
 }

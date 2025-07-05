@@ -192,7 +192,7 @@
 }
 
 @utility main-section {
-  @apply flex flex-col items-center justify-center h-[120vh] lg:h-[80vh] w-screen gap-13 mx-4
+  @apply flex flex-col items-center justify-center h-max lg:h-[80vh] w-screen gap-13 mx-4 my-20;
 }
 
 @utility section-title {

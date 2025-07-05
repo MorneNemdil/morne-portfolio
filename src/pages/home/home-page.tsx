@@ -54,10 +54,10 @@ const HomePage = () => {
 
     const typewriterText = "I'm a ";
     const typewriterSegments: TypeWriterSegmentProps[] = [
-        { text: "Developer", colourClass: theme == 'light' ? "text-sky-400" : "text-blue-500" },
-        { text: "Team Leader", colourClass: theme == 'light' ? "text-sky-400" : "text-blue-500" },
-        { text: "Designer", colourClass: theme == 'light' ? "text-sky-400" : "text-blue-500" },
-        { text: "Solver", colourClass: theme == 'light' ? "text-sky-400" : "text-blue-500" },
+        { text: "Developer", colourClass: theme == 'light' ? "text-indigo-500" : "text-blue-500" },
+        { text: "Team Leader", colourClass: theme == 'light' ? "text-blue-400" : "text-blue-500" },
+        { text: "Designer", colourClass: theme == 'light' ? "text-indigo-500" : "text-blue-500" },
+        { text: "Solver", colourClass: theme == 'light' ? "text-blue-400" : "text-blue-500" },
     ];
 
     const heroTitleSize = "text-3xl sm:text-5xl md:text-6xl";
@@ -140,22 +140,24 @@ const HomePage = () => {
     }
 
     const TechnologiesSection = () => {
-        const hexagonsContent = [
+        const isMobile = breakpoint == 'sm' || breakpoint == 'md';
+
+        const desktopHexagonsContent = [
             <img src={ReactLogo} className="scale-[80%] -translate-y-[10%]" />,
             <img src={TsLogo} className="scale-[70%] -translate-y-[17%]" />,
             <img src={JsLogo} className="scale-[70%] -translate-y-[17%] rounded-2xl" />,
             <img src={ShadcnLogo} className="scale-[70%] -translate-y-[17%] rounded-2xl" />,
             <img src={AppwriteLogo} className="scale-[70%] -translate-y-[17%]" />,
             <img src={CsharpLogo} className="scale-[70%] -translate-y-[17%]" />,
-            <img src={EfCoreLogo} className="scale-[100%] rounded-2xl " />,
+            <img src={EfCoreLogo} className="scale-[100%] rounded-2xl" />,
             <img src={GitLogo} className="scale-[70%] -translate-y-[17%]" />,
             <img src={ForkLogo} className="scale-[70%] -translate-y-[17%]" />,
             <img src={JavaLogo} className="scale-[75%] -translate-y-[17%] rounded-full bg-white p-5" />,
             <img src={MssmsLogo} />,
             <div></div>,
-        ]
+        ];
 
-        const hexagonsContent2 = [
+        const desktopHexagonsContent2 = [
             <img src={PostgreSqlLogo} className="scale-[70%] -translate-y-[12%]" />,
             <img src={SqlLogo} className="scale-[70%] -translate-y-[12%]" />,
             <img src={VsCodeLogo} className="-translate-y-[14%] scale-[60%]" />,
@@ -164,24 +166,70 @@ const HomePage = () => {
             <img src={VsLogo} className="-translate-y-[12%] rounded-full bg-white scale-[75%] p-6" />,
             <img src={ViteLogo} className="scale-[70%] -translate-y-[12%]" />,
             <img src={VercelLogo} className="scale-[70%] -translate-y-[17%] bg-white rounded-full p-1" />,
-            <img src={GitHubLogo} className="scale-[70%] -translate-y-[17%]  bg-white rounded-full p-1 pt-0.5 pb-1.5" />,
+            <img src={GitHubLogo} className="scale-[70%] -translate-y-[17%] bg-white rounded-full p-1 pt-0.5 pb-1.5" />,
             <img src={NodeJsLogo} className="scale-[70%] -translate-y-[17%] rounded-2xl" />,
             <div></div>,
             <div></div>,
-        ]
+        ];
 
-        return <section id="technologies" className="main-section !h-[70vh] mt-[10vh] lg:mt-[20vh] xl:mt-[30vh]">
-            <div className="section-title" data-aos="fade-up">Technologies 🤖</div>
-            <div className="flex flex-col items-center -translate-x-[2%] mr-4">
-                <div className="w-full flex justify-center items-center">
-                    {hexagonsContent.map((x, i) => renderHexagon(i, x, hexagonsContent))}
+        const mobileHexagonsContent = [
+            [
+                <img src={ReactLogo} className="scale-[80%] -translate-y-[10%]" />,
+                <img src={TsLogo} className="scale-[70%] -translate-y-[17%]" />,
+                <img src={JsLogo} className="scale-[70%] -translate-y-[17%] rounded-2xl" />,
+                <img src={ShadcnLogo} className="scale-[70%] -translate-y-[17%] rounded-2xl" />,
+                <img src={AppwriteLogo} className="scale-[70%] -translate-y-[17%]" />,
+                <img src={CsharpLogo} className="scale-[70%] -translate-y-[17%]" />,
+            ],
+            [
+                <img src={PostgreSqlLogo} className="scale-[70%] -translate-y-[12%]" />,
+                <img src={SqlLogo} className="scale-[70%] -translate-y-[12%]" />,
+                <img src={VsCodeLogo} className="-translate-y-[14%] scale-[60%]" />,
+                <img src={TailwindLogo} className="-translate-y-[15%]" />,
+                <img src={CssLogo} className="scale-[80%] -translate-y-[15%]" />,
+                <img src={VsLogo} className="-translate-y-[12%] rounded-full bg-white scale-[75%] p-6" />,
+            ],
+            [
+                <img src={ViteLogo} className="scale-[70%] -translate-y-[12%]" />,
+                <img src={VercelLogo} className="scale-[70%] -translate-y-[17%] bg-white rounded-full p-1" />,
+                <img src={GitHubLogo} className="scale-[70%] -translate-y-[17%] bg-white rounded-full p-1 pt-0.5 pb-1.5" />,
+                <img src={NodeJsLogo} className="scale-[70%] -translate-y-[17%] rounded-2xl" />,
+                <img src={EfCoreLogo} className="scale-[100%] rounded-2xl" />,
+                <img src={GitLogo} className="scale-[70%] -translate-y-[17%]" />,
+            ],
+            [
+                <img src={ForkLogo} className="scale-[70%] -translate-y-[17%]" />,
+                <img src={JavaLogo} className="scale-[75%] -translate-y-[17%] rounded-full bg-white p-5" />,
+                <img src={MssmsLogo} />,
+                <div></div>,
+                <div></div>,
+                <div></div>,
+            ],
+        ];
+
+        return (            
+            <section id="technologies" className="main-section  !h-[130vh] lg:!h-[70vh] mt-[10vh] lg:mt-[20vh] xl:mt-[30vh]">
+                <div className="section-title" data-aos="fade-up">Technologies 🤖</div>
+                <div className="flex flex-col items-center -translate-x-[2%] mr-4">
+                    {!isMobile
+                        ? <>
+                            <div className="w-full flex justify-center items-center">
+                                {desktopHexagonsContent.map((x, i) => renderHexagon(i, x, desktopHexagonsContent))}
+                            </div>
+                            <div className="w-full flex justify-center items-center">
+                                {desktopHexagonsContent2.map((x, i) => renderHexagon(i, x, desktopHexagonsContent2))}
+                            </div>
+                        </>
+                        : mobileHexagonsContent.map((row, idx) => (
+                            <div key={idx} className="w-full flex justify-center items-center">
+                                {row.map((x, i) => renderHexagon(i, x, row))}
+                            </div>
+                        ))
+                    }
                 </div>
-                <div className="w-full flex justify-center items-center">
-                    {hexagonsContent2.map((x, i) => renderHexagon(i, x, hexagonsContent2))}
-                </div>
-            </div>
-        </section>
-    }
+            </section>
+        );
+    };
 
     const renderHexagon = (i: number, thisContent: JSX.Element, contentsArray: JSX.Element[]) => {
         // Only process even indices to form pairs
@@ -250,7 +298,7 @@ const HomePage = () => {
             />
         }]
 
-        return (<section id="work" className="main-section lg:mt-[20vh] xl:mt-[40vh]">
+        return (<section id="work" className="main-section !h-[50vh] md:!h-[90vh] mt-[10vh] sm:mt-[40vh] md:mt-[15vh] lg:mt-[20vh] xl:mt-[40vh]">
             <div className="section-title" data-aos="fade-up">Work 💻</div>
             {breakpoint == 'xl'
                 ? <EmblaCarousel slides={SLIDES.concat(EMPTY_SLIDES)} options={OPTIONS} />
@@ -259,7 +307,7 @@ const HomePage = () => {
     }
 
     const PricingSection = () => {
-        return <section id="pricing" className="main-section mt-[10vh] lg:mt-[20vh] xl:mt-[30vh]" >
+        return <section id="pricing" className="main-section mt-[70vh] lg:mt-[20vh] xl:mt-[30vh]" >
             <div className="section-title" data-aos="fade-up">Pricing 🏷️</div>
             {breakpoint == 'md'
                 ? <div className={`flex gap-15 flex-col md:flex-row`}>

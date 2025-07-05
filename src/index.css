@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Oooh+Baby&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -222,6 +223,12 @@ body {
   animation-iteration-count: infinite;
   transform-origin: 70% 70%;
   display: inline-block;
+}
+
+@utility logo-font {
+  font-family: "Oooh Baby";
+
+  @apply bg-gradient-to-r from-blue-600 to-purple-900 text-transparent bg-clip-text text-2xl font-bold w-[8vw];
 }
 
 @utility pointer-events-all {

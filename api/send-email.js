@@ -3,6 +3,7 @@ export default async (req, res) => {
     if (req.method === 'POST') {
         const { fullName, email, phoneNumber, message } = req.body;
         const accessKey = process.env.MORNE_EMAIL_ACCESS_KEY;
+        console.log("ACCESSKEY: ", accessKey);
         const siteName = process.env.SITE_NAME;
         const fixedMessage = `Origin: ${siteName} \n Message: ${message}`;
 

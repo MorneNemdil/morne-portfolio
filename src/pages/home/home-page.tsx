@@ -85,7 +85,7 @@ const HomePage = () => {
     }
 
     const AboutSection = () => {
-        return (<section id="about" className="main-section">
+        return (<section id="about" className="main-section mt-60 lg:mt-0">
             <div data-aos="fade-up" className="section-title">About Me 💭</div>
             <div className="flex flex-col items-center lg:flex-row lg:justify-center gap-10 w-[80vw]">
                 <div className="flex flex-col h-[80%] justify-between gap-10">
@@ -113,7 +113,7 @@ const HomePage = () => {
     }
 
     const EducationSection = () => {
-        return (<section id="education" className="main-section xl:my-70 2xl:my-0">
+        return (<section id="education" className="main-section my-70 2xl:my-0">
             <div className="section-title" data-aos="fade-up">Education 🎓</div>
             <div className="flex flex-col 2xl:flex-row w-full 2xl:w-[60vw] justify-center items-center gap-10 text-lg font-semibold md:font-normal sm:text-xl md:text-2xl">
                 <Card data-aos="fade-right" className={cn("flex flex-col items-center w-[75%] 2xl:w-1/2 gap-5 h-full transition-all")}>
@@ -298,7 +298,7 @@ const HomePage = () => {
             />
         }]
 
-        return (<section id="work" className="main-section my-80">
+        return (<section id="work" className="main-section mt-60 lg:my-80">
             <div className="section-title" data-aos="fade-up">Work 💻</div>
             {breakpoint == 'xl'
                 ? <EmblaCarousel slides={SLIDES.concat(EMPTY_SLIDES)} options={OPTIONS} />
@@ -370,7 +370,7 @@ const HomePage = () => {
             });
         }
 
-        return <section id="contact" className="main-section !mt-40">
+        return <section id="contact" className="main-section !mt-50 lg:!mt-40">
             <div className="section-title" data-aos="fade-up">Contact 🤝</div>
             <div className="flex justify-center items-center">
                 <Card data-aos="flip-left" data-aos-duration="1000">

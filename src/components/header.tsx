@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { scrollToSectionMiddle, scrollToSectionTop } from "@/lib/utils";
 import useBreakpoint from "@/lib/use-breakpoint";
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
+import MorneLogo from "@/assets/logos/morneLogo.png";
+import "@/my-css.css";
 
 const Header = () => {
     const { theme, setTheme } = useTheme();
@@ -40,17 +42,23 @@ const Header = () => {
         { name: 'contact', displayName: "Contact", scrollFunc: scrollToSectionMiddle },
     ];
 
+    const SiteLogo = () => {
+        return (
+            <img className="w-[2.5vw] h-[2.3vw] rounded-full" src={MorneLogo} />
+        )
+    }
+
     const DesktopHeader = () => {
         return <Card className="bg-white m-3 text-gray-500 p-5 w-full">
             <div className="flex justify-between">
                 <div
-                    className="flex items-center ml-2 header-link"
+                    className="flex items-center ml-2 header-link gap-4"
                     onClick={async () => {
                         scrollToSectionMiddle("hero");
                         await setTimeout(() => setIsVisible(false), 900);
                     }}
                 >
-                    Logo
+                    <SiteLogo /><div className="logo-font">Morne Nemdil</div>
                 </div>
                 <div className="flex gap-6 items-center">
                     <div className="flex gap-3 items-center font-semibold text-l">

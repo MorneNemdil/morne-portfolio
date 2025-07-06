@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import HomePage from "./pages/home/home-page"
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider, useTheme } from "@/components/theme-provider"
 import { Toaster } from "sonner"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -11,8 +11,10 @@ import { useEffect } from "react";
 // import Login from "./pages/auth/login/login"
 
 function App() {
+  const {setTheme} = useTheme();
+  
   useEffect(() => {
-    AOS.init()
+    AOS.init();
   }, []);
 
   return (

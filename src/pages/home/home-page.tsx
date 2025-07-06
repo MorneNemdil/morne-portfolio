@@ -101,7 +101,7 @@ const HomePage = () => {
                         <div>I’m constantly learning and enjoy keeping up with the latest web trends and technologies. Whether collaborating with a team or working independently, I bring attention to detail, problem-solving skills, and a drive for clean, maintainable code to every project I take on.</div>
                         <div className="flex flex-wrap items-baseline">
                             <div
-                                className={`font-bold ${breakpoint == 'lg' || breakpoint == 'xl' || breakpoint == 'md' ? 'text-gray-500 hover:cursor-pointer transition-all duration-700 hover:text-pink-500 hover:shadow-2xl hover:-rotate-2 hover:text-[26px]' : 'text-pink-500'} inline-block`}
+                                className={`font-bold ${breakpoint == 'lg' || breakpoint == 'xl' || breakpoint == 'md' ? 'text-gray-500 hover:cursor-pointer transition-all duration-700 hover:text-pink-500 hover:-rotate-2 hover:text-[26px]' : 'text-pink-500'} inline-block`}
                                 onClick={() => scrollToSectionMiddle("contact")}>
                                 Get in touch&nbsp;
                             </div>

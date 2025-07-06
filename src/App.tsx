@@ -10,9 +10,7 @@ import { useEffect } from "react";
 // import { UserProvider } from "./lib/context/user"
 // import Login from "./pages/auth/login/login"
 
-function App() {
-  const {setTheme} = useTheme();
-  
+function App() {  
   useEffect(() => {
     AOS.init();
   }, []);

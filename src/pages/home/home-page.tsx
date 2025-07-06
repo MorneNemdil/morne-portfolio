@@ -46,7 +46,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-
+import Portrait from "@/assets/portrait-Photoroom.jpg";
 
 const HomePage = () => {
     const { theme, setTheme } = useTheme();
@@ -91,7 +91,7 @@ const HomePage = () => {
             <div className="flex flex-col items-center lg:flex-row lg:justify-center gap-10 w-[80vw]">
                 <div className="flex flex-col h-[80%] justify-between gap-10">
                     <div data-aos="fade-right" className="h-5/6 flex justify-center items-center">
-                        <img className="rounded-full min-h-40 min-w-40 max-h-60 max-w-60" src={TempImage} />
+                        <img className={`rounded-full min-h-40 min-w-40 max-h-60 max-w-60 ${theme == 'dark' ? "border-gray-700 border-4" : "border-blue-500 border-2"}`} src={Portrait} />
                     </div>
                     <div data-aos="fade-right" className="h-1/6 flex justify-center"><Button onClick={() => scrollToSectionMiddle("contact")}>Contact me</Button></div>
                 </div>

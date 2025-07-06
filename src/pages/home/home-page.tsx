@@ -2,7 +2,6 @@ import Header from "@/components/header";
 import { StarBackground } from "@/components/star-background";
 import { useTheme } from "@/components/theme-provider"
 import TypewriterText, { type TypeWriterSegmentProps } from "@/components/typewriter-text";
-import TempImage from "@/assets/bluePic.avif";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn, isNullOrEmpty, scrollToSectionMiddle } from "@/lib/utils";

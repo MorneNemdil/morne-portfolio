@@ -96,7 +96,7 @@ const HomePage = () => {
                 </div>
                 <Card data-aos="fade-left" className="font-semibold md:font-normal transition-all">
                     <div data-aos="fade-left" data-aos-delay={250} className={`grow flex flex-col gap-3 text-lg sm:text-xl md:text-2xl`}>
-                        <div>I'm a passionate web developer based in Brighton, UK, and have a love for turning your ideas into well-crafted digital experiences. With a solid understanding of XML, CSS, Typescript, and many other tools, I specialise in creating responsive and user-friendly websites that balance form and function.</div>
+                        <div>I'm a passionate web developer based in the UK and I have a love for turning your ideas into well-crafted digital experiences. With a solid understanding of XML, CSS, Typescript, and many other tools, I specialise in creating responsive and user-friendly websites that balance form and function.</div>
                         <div>I’m constantly learning and enjoy keeping up with the latest web trends and technologies. Whether collaborating with a team or working independently, I bring attention to detail, problem-solving skills, and a drive for clean, maintainable code to every project I take on.</div>
                         <div className="flex flex-wrap items-baseline">
                             <div

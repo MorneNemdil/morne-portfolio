@@ -133,7 +133,7 @@ const HomePage = () => {
                 <Card data-aos="fade-left" data-aos-delay={200} className="flex flex-col items-center w-[75%] 2xl:w-1/2 gap-5 h-full transition-all">
                     <div className={"text-3xl md:text-4xl".concat(theme == 'dark' ? ' text-purple-400' : ' text-blue-400')}>University</div>
                     <div className="px-5">
-                        I'm currently in my 4th year of my undergraduate degree in Computer Science at the University of Sussex, on track to achieve a grade 1st. In my third year, I worked as a web developer for RSM UK which is where I really honed in on web development as a career. More about my work with RSM below.
+                        I'm currently in my 4th year of my undergraduate degree in Computer Science at the University of Sussex, on track to achieve a grade 1st. In my third year, I worked as a web developer for RSM UK which is where I really honed in on web development as a career. This is where I became a much more confident in my skills.
                     </div>
                 </Card>
             </div>
@@ -242,15 +242,21 @@ const HomePage = () => {
             // Render two hexagons side-by-side
             return (
                 <div key={i} className="w-min">
-                    <HexagonPlate className="scale-on-hover">{thisContent}</HexagonPlate>
-                    <HexagonPlate className="scale-on-hover translate-x-[50%]">{nextItem}</HexagonPlate>
+                    <div data-aos="flip-right" data-aos-delay={i * 100}>
+                        <HexagonPlate className="scale-on-hover">{thisContent}</HexagonPlate>
+                    </div>
+                    <div data-aos="flip-left" data-aos-delay={i * 100}>
+                        <HexagonPlate className="scale-on-hover translate-x-[50%]">{nextItem}</HexagonPlate>
+                    </div>
                 </div>
             );
         } else {
             // If there's an odd number of items, render the last one alone
             return (
-                <div key={i} className="w-min -translate-y-[50%]">
-                    <HexagonPlate className="scale-on-hover">{thisContent}</HexagonPlate>
+                <div data-aos="fade-right">
+                    <div key={i} className="w-min -translate-y-[50%]">
+                        <HexagonPlate className="scale-on-hover">{thisContent}</HexagonPlate>
+                    </div>
                 </div>
             );
         }

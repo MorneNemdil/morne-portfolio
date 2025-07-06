@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn, isNullOrEmpty, scrollToSectionMiddle } from "@/lib/utils";
 import { ArrowDown } from "lucide-react";
-import { type JSX } from "react";
+import { useEffect, type JSX } from "react";
 import EmblaCarousel from "@/components/embla-ui/embla-carousel";
 import type { EmblaOptionsType } from 'embla-carousel'
 import '@/embla.css';
@@ -49,8 +49,9 @@ import { toast } from "sonner";
 
 
 const HomePage = () => {
-    const { theme } = useTheme();
+    const { theme, setTheme } = useTheme();
     const breakpoint = useBreakpoint();
+    useEffect(() => setTheme('dark'), []);
 
     const typewriterText = "I'm a ";
     const typewriterSegments: TypeWriterSegmentProps[] = [

@@ -50,9 +50,10 @@ const Header = () => {
                 <Link
                     className="flex items-center ml-2 header-link gap-4"
                     onClick={async () => await setTimeout(() => setIsVisible(false), 900)}
-                    to={"home"}
+                    to={"hero"}
                     smooth={true}
-                    duration={500}
+                    duration={600}
+                    offset={-150}
                 >
                     <SiteLogo /><div className="logo-font w-[140px]">Morne Nemdil</div>
                 </Link>
@@ -90,7 +91,17 @@ const Header = () => {
                     </SheetTrigger>
                     <SheetContent>
                         <SheetHeader>
-                            <SheetTitle>Morne's Portfolio</SheetTitle>
+                            <SheetTitle>
+                                <Link
+                                    onClick={async () => await setTimeout(() => setIsVisible(false), 900)}
+                                    to={"hero"}
+                                    smooth={true}
+                                    duration={600}
+                                    offset={-200}
+                                >
+                                    Morne's Portfolio
+                                </Link>
+                            </SheetTitle>
                             <SheetDescription>
                                 Navigate to different sections here!
                             </SheetDescription>

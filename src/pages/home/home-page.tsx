@@ -130,14 +130,7 @@ const HomePage = () => {
                 <Card data-aos="fade-right" className={cn("flex flex-col items-center w-[75%] 2xl:w-1/2 gap-5 h-full transition-all")}>
                     <div className={"text-3xl md:text-4xl".concat(theme == 'dark' ? ' text-purple-400' : ' text-blue-400')}>College</div>
                     <div className="px-5">
-                        College is where I chose to go all in on a computer-related career. I studied hard for the grades that I achieved and I built the work ethic to go on to do a University degree.
-                    </div>
-                    <div className="w-full flex justify-start px-9">
-                        <ul className="list-outside list-disc">
-                            <li>Computer Science: A</li>
-                            <li>Physics: B</li>
-                            <li>Mathematics: B</li>
-                        </ul>
+                        College is where I chose to go all in on a computer-related career. I started taking my studies a lot more seriously in order to be able to do my desired course at University. College is where I built the work ethic to be able to go on to do a university career, and my course in Computer Science helped me build the fundamentals of programing and related concepts.
                     </div>
                 </Card>
                 <Card data-aos="fade-left" data-aos-delay={200} className="flex flex-col items-center w-[75%] 2xl:w-1/2 gap-5 h-full transition-all">

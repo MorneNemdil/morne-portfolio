@@ -47,6 +47,7 @@ import { toast } from "sonner";
 import Portrait from "@/assets/portrait-Photoroom.jpg";
 import { Link } from "react-scroll";
 import { cn, isNullOrEmpty } from "@/lib/utils";
+import { CloudBackground } from "@/components/cloud-background";
 
 const HomePage = () => {
     const { theme, setTheme } = useTheme();
@@ -107,7 +108,7 @@ const HomePage = () => {
                         <div>I’m constantly learning and enjoy keeping up with the latest web trends and technologies. Whether collaborating with a team or working independently, I bring attention to detail, problem-solving skills, and a drive for clean, maintainable code to every project I take on.</div>
                         <div className="flex flex-wrap items-baseline">
                             <Link
-                                className={`font-bold ${breakpoint == 'lg' || breakpoint == 'xl' || breakpoint == 'md' ? 'text-gray-500 hover:cursor-pointer transition-all duration-700 hover:text-pink-500 hover:-rotate-2 hover:text-[26px]' : 'text-pink-500'} inline-block`}
+                                className={`font-bold ${breakpoint == 'lg' || breakpoint == 'xl' || breakpoint == 'md' ? `text-gray-500 hover:cursor-pointer transition-all duration-700 ${theme == 'dark' ? "hover:text-pink-500" : "hover:text-blue-400"} hover:-rotate-2 hover:text-[26px]` : `${theme == 'dark' ? "text-pink-500" : "text-blue-500"}`} inline-block`}
                                 to="contact"
                                 smooth={true}
                                 duration={870}
@@ -431,7 +432,7 @@ const HomePage = () => {
 
     return (
         <div className="">
-            {theme == 'dark' && <StarBackground />}
+            {theme == 'dark' ? <StarBackground /> : <CloudBackground />}
             <Header />
             <HeroSection />
             <AboutSection />

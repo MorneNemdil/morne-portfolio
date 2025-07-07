@@ -1,9 +1,7 @@
 .hexagon-wrapper {
-  clip-path: polygon(
-    25% 0%, 75% 0%,
-    100% 50%, 75% 100%,
-    25% 100%, 0% 50%
-  );
+  clip-path: polygon(25% 0%, 75% 0%,
+      100% 50%, 75% 100%,
+      25% 100%, 0% 50%);
 }
 
 .hexagon-inner {
@@ -12,4 +10,28 @@
 
 .hexagon-content {
   clip-path: inherit;
+}
+
+/* CLOUD BACKGROUND */
+
+.cloud {
+  position: absolute;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/1/13/Cloud_%28fixed_width%29.svg') no-repeat center center;
+  background-size: contain;
+}
+
+@keyframes floatCloud {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(150vw);
+  }
+}
+
+.animate-cloud {
+  animation-name: floatCloud;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }

@@ -13,7 +13,7 @@ const PricingCard3 = () => {
             <Card className="p-7 md:w-xs">
                 <div className="flex flex-col gap-1">
                     <div className="text-3xl font-semibold">Business Site</div>
-                    <div className="text-xl">£599 - £1299</div>
+                    <div className="text-xl">£699 - £1399</div>
                 </div>
                 <Separator />
                 <div className="flex gap-3">

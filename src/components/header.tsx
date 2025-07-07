@@ -3,11 +3,11 @@ import { useTheme } from "./theme-provider"
 import { Button } from "./ui/button"
 import { Card } from "./ui/card"
 import { useEffect, useState } from "react";
-import { scrollToSectionMiddle, scrollToSectionTop } from "@/lib/utils";
-import useBreakpoint from "@/lib/use-breakpoint";
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
 import MorneLogo from "@/assets/logos/morneLogo.png";
 import "@/my-css.css";
+import { Link } from 'react-scroll';
+import useBreakpoint from "@/lib/use-breakpoint";
 
 const Header = () => {
     const { theme, setTheme } = useTheme();
@@ -33,13 +33,13 @@ const Header = () => {
     }, [lastScrollY]);
 
     const navlinks = [
-        { name: 'home', displayName: "Home", scrollFunc: breakpoint == 'sm' ? scrollToSectionTop : scrollToSectionMiddle },
-        { name: 'about', displayName: "About", scrollFunc: breakpoint == 'sm' ? scrollToSectionTop : scrollToSectionMiddle },
-        { name: 'education', displayName: "Education", scrollFunc: breakpoint == 'sm' ? scrollToSectionTop : scrollToSectionMiddle },
-        { name: 'technologies', displayName: "Technologies", scrollFunc: scrollToSectionMiddle },
-        { name: 'work', displayName: "Work", scrollFunc: scrollToSectionMiddle },
-        { name: 'pricing', displayName: "Pricing", scrollFunc: scrollToSectionMiddle },
-        { name: 'contact', displayName: "Contact", scrollFunc: scrollToSectionMiddle },
+        { name: 'home', displayName: "Home", offset: 0 },
+        { name: 'about', displayName: "About", offset: -60 },
+        { name: 'education', displayName: "Education", offset: -50 },
+        { name: 'technologies', displayName: "Technologies", offset: -80 },
+        { name: 'work', displayName: "Work", offset: -140 },
+        { name: 'pricing', displayName: "Pricing", offset: -95 },
+        { name: 'contact', displayName: "Contact", offset: 0 },
     ];
 
     const SiteLogo = () => {
@@ -49,29 +49,30 @@ const Header = () => {
     const DesktopHeader = () => {
         return <Card className="bg-white m-3 text-gray-500 p-5 w-full">
             <div className="flex justify-between">
-                <div
+                <Link
                     className="flex items-center ml-2 header-link gap-4"
-                    onClick={async () => {
-                        scrollToSectionMiddle("hero");
-                        await setTimeout(() => setIsVisible(false), 900);
-                    }}
+                    onClick={async () => await setTimeout(() => setIsVisible(false), 900)}
+                    to={"home"}
+                    smooth={true}
+                    duration={500}
                 >
                     <SiteLogo /><div className="logo-font w-[140px]">Morne Nemdil</div>
-                </div>
+                </Link>
                 <div className="flex gap-6 items-center">
                     <div className="flex gap-3 items-center font-semibold text-l">
                         {navlinks.filter(x => x.name !== 'home')
-                            .map((navlink, i) =>
-                                <div
-                                    key={i}
-                                    onClick={async () => {
-                                        navlink.scrollFunc(navlink.name);
-                                        await setTimeout(() => setIsVisible(false), 900);
-                                    }}
+                            .map((navlink) =>
+                                <Link
+                                    key={navlink.name}
+                                    to={navlink.name}
+                                    offset={navlink.offset}
+                                    smooth={true}
+                                    duration={900}
                                     className="header-link"
+                                    onScrollEnd={async () => await setTimeout(() => setIsVisible(false), 300)}
                                 >
                                     {navlink.displayName}
-                                </div>
+                                </Link>
                             )}
                     </div>
                     <Button onClick={() => setTheme(theme == "light" ? "dark" : "light")}>
@@ -96,16 +97,22 @@ const Header = () => {
                                 Navigate to different sections here!
                             </SheetDescription>
                             <div className="flex flex-col gap-5 py-3">
-                                {navlinks.map(link => (
-                                    <SheetClose asChild key={link.name}>
-                                        <div onClick={async () => {
-                                            link.scrollFunc(link.name);
-                                            await setTimeout(() => setIsVisible(false), 900);
-                                        }} className={`text-lg font-semibold cursor-pointer`}>
-                                            {link.displayName}
-                                        </div>
-                                    </SheetClose>
-                                ))}
+                                {navlinks.filter(x => x.name !== 'home').map(navlink => {
+                                    return (
+                                        <SheetClose asChild key={navlink.name}>
+                                            <Link
+                                                key={navlink.name}
+                                                to={navlink.name}
+                                                offset={navlink.offset}
+                                                smooth={true}
+                                                duration={900}
+                                                className="text-lg font-semibold cursor-pointer"
+                                            >
+                                                {navlink.displayName}
+                                            </Link>
+                                        </SheetClose>
+                                    );
+                                })}
                             </div>
                             <Button className="" onClick={() => setTheme(theme == "light" ? "dark" : "light")}>
                                 {theme == "light" ? <Moon /> : <Sun />}

@@ -2,8 +2,8 @@ import { Check, X } from "lucide-react"
 import { Card } from "../ui/card"
 import { Separator } from "../ui/separator"
 import { Button } from "../ui/button"
-import { scrollToSectionMiddle } from "@/lib/utils"
 import { useTheme } from "../theme-provider"
+import { Link } from "react-scroll"
 
 const PricingCard2 = () => {
     const { theme } = useTheme();
@@ -44,7 +44,9 @@ const PricingCard2 = () => {
                     <X className="border rounded-full border-gray-400 p-1 scale-110" />
                     <div>Authentication</div>
                 </div>
-                <Button onClick={() => scrollToSectionMiddle("contact")}>Get Started</Button>
+                <Link className="w-full flex justify-center" to="contact" smooth={true} duration={500}>
+                    <Button className="w-full">Get Started</Button>
+                </Link>
             </Card>
         </div>
     )

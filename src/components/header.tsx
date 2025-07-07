@@ -6,12 +6,20 @@ import { useEffect, useState } from "react";
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
 import MorneLogo from "@/assets/logos/morneLogo.png";
 import "@/my-css.css";
-import { Link } from 'react-scroll';
+import { Events, Link } from 'react-scroll';
 
 const Header = () => {
     const { theme, setTheme } = useTheme();
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
+
+    useEffect(() => {
+        Events.scrollEvent.register('end', () => {
+            setTimeout(() => setIsVisible(false), 200);
+        });
+
+        return () => Events.scrollEvent.remove('end');
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -49,7 +57,6 @@ const Header = () => {
             <div className="flex justify-between">
                 <Link
                     className="flex items-center ml-2 header-link gap-4"
-                    onClick={async () => await setTimeout(() => setIsVisible(false), 900)}
                     to={"hero"}
                     smooth={true}
                     duration={600}
@@ -68,7 +75,6 @@ const Header = () => {
                                     smooth={true}
                                     duration={900}
                                     className="header-link"
-                                    onScrollEnd={async () => await setTimeout(() => setIsVisible(false), 300)}
                                 >
                                     {navlink.displayName}
                                 </Link>
@@ -93,7 +99,6 @@ const Header = () => {
                         <SheetHeader>
                             <SheetTitle>
                                 <Link
-                                    onClick={async () => await setTimeout(() => setIsVisible(false), 900)}
                                     to={"hero"}
                                     smooth={true}
                                     duration={600}

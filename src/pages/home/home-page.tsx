@@ -4,7 +4,6 @@ import { useTheme } from "@/components/theme-provider"
 import TypewriterText, { type TypeWriterSegmentProps } from "@/components/typewriter-text";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { cn, isNullOrEmpty, scrollToSectionMiddle } from "@/lib/utils";
 import { ArrowDown } from "lucide-react";
 import { useEffect, type JSX } from "react";
 import EmblaCarousel from "@/components/embla-ui/embla-carousel";
@@ -46,6 +45,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import Portrait from "@/assets/portrait-Photoroom.jpg";
+import { Link } from "react-scroll";
+import { cn, isNullOrEmpty } from "@/lib/utils";
 
 const HomePage = () => {
     const { theme, setTheme } = useTheme();
@@ -80,7 +81,9 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
-            <ArrowDown className={`mt-[10vh] border ${theme == 'dark' ? "border-purple-300" : "border-blue-200"} border-2 rounded-full p-1.5 animate-bounce hover:cursor-pointer`} onClick={() => scrollToSectionMiddle("about")} size={48} />
+            <Link to={"about"} smooth={true} duration={600}>
+                <ArrowDown className={`mt-[10vh] border ${theme == 'dark' ? "border-purple-300" : "border-blue-200"} border-2 rounded-full p-1.5 animate-bounce hover:cursor-pointer`} size={48} />
+            </Link>
         </section>)
     }
 
@@ -92,18 +95,25 @@ const HomePage = () => {
                     <div data-aos="fade-right" className="h-5/6 flex justify-center items-center">
                         <img className={`rounded-full min-h-40 min-w-40 max-h-60 max-w-60 ${theme == 'dark' ? "border-gray-700 border-4" : "border-blue-500 border-2"}`} src={Portrait} />
                     </div>
-                    <div data-aos="fade-right" className="h-1/6 flex justify-center"><Button onClick={() => scrollToSectionMiddle("contact")}>Contact me</Button></div>
+                    <div data-aos="fade-right" className="h-1/6 flex justify-center">
+                        <Link to="contact" smooth={true} duration={1200}>
+                            <Button>Contact me</Button>
+                        </Link>
+                    </div>
                 </div>
                 <Card data-aos="fade-left" className="font-semibold md:font-normal transition-all">
                     <div data-aos="fade-left" data-aos-delay={250} className={`grow flex flex-col gap-3 text-lg sm:text-xl md:text-2xl`}>
                         <div>I'm a passionate web developer based in the UK and I have a love for turning your ideas into well-crafted digital experiences. With a solid understanding of XML, CSS, Typescript, and many other tools, I specialise in creating responsive and user-friendly websites that balance form and function.</div>
                         <div>I’m constantly learning and enjoy keeping up with the latest web trends and technologies. Whether collaborating with a team or working independently, I bring attention to detail, problem-solving skills, and a drive for clean, maintainable code to every project I take on.</div>
                         <div className="flex flex-wrap items-baseline">
-                            <div
+                            <Link
                                 className={`font-bold ${breakpoint == 'lg' || breakpoint == 'xl' || breakpoint == 'md' ? 'text-gray-500 hover:cursor-pointer transition-all duration-700 hover:text-pink-500 hover:-rotate-2 hover:text-[26px]' : 'text-pink-500'} inline-block`}
-                                onClick={() => scrollToSectionMiddle("contact")}>
+                                to="contact"
+                                smooth={true}
+                                duration={870}
+                            >
                                 Get in touch&nbsp;
-                            </div>
+                            </Link>
                             <span className="inline">if you're ready to take your business to the next level with a clean, responsive and functional website.</span>
                         </div>
                     </div>
@@ -430,7 +440,7 @@ const HomePage = () => {
             <WorkSection />
             <PricingSection />
             <ContactSection />
-            <div className="h-[20px]" />
+            <div className="h-40 md:h-10" />
         </div>
     )
 }

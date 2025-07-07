@@ -1,6 +1,6 @@
+import { Link } from "react-scroll";
 import { useTheme } from "./theme-provider";
 import { Button } from "./ui/button";
-import { scrollToSectionMiddle } from "@/lib/utils";
 
 interface WorkSectionCardProps {
     title: string;
@@ -25,7 +25,9 @@ const WorkSectionCard = ({ title, description, image, siteLink }: WorkSectionCar
                 </div>}
             <div className="flex gap-3">
                 <Button onClick={() => { if (Boolean(siteLink)) { window.open(siteLink, '_blank') } }}>Live Demo</Button>
-                <Button onClick={() => scrollToSectionMiddle("contact")} className="bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-gray-200">Make your own</Button>
+                <Link to="contact" smooth={true} duration={750}>
+                    <Button className="bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-gray-200">Make your own</Button>
+                </Link>
             </div>
         </div >
     )

@@ -7,13 +7,11 @@ import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTi
 import MorneLogo from "@/assets/logos/morneLogo.png";
 import "@/my-css.css";
 import { Link } from 'react-scroll';
-import useBreakpoint from "@/lib/use-breakpoint";
 
 const Header = () => {
     const { theme, setTheme } = useTheme();
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
-    const breakpoint = useBreakpoint();
 
     useEffect(() => {
         const handleScroll = () => {

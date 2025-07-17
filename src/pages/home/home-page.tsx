@@ -52,7 +52,7 @@ import { CloudBackground } from "@/components/cloud-background";
 const HomePage = () => {
     const { theme, setTheme } = useTheme();
     const breakpoint = useBreakpoint();
-    useEffect(() => setTheme('dark'), []);
+    useEffect(() => setTheme('light'), []);
 
     const typewriterText = "I'm a ";
     const typewriterSegments: TypeWriterSegmentProps[] = [

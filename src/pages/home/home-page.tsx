@@ -48,6 +48,7 @@ import Portrait from "@/assets/portrait-Photoroom.jpg";
 import { Link } from "react-scroll";
 import { cn, isNullOrEmpty } from "@/lib/utils";
 import { CloudBackground } from "@/components/cloud-background";
+import BarberScreenshot from "@/assets/barber-screenshot.png";
 
 const HomePage = () => {
     const { theme, setTheme } = useTheme();
@@ -285,16 +286,18 @@ const HomePage = () => {
                     image={PortfolioImage}
                     siteLink="https://www.mornenemdil.com"
                 />
+            }, {
+                index: 2,
+                content: <WorkSectionCard
+                    title="Barber with Booking"
+                    description="This is a demo barber website created to showcase web design skills. It features a modern barbershop layout with example services, pricing, and a booking system."
+                    image={BarberScreenshot}
+                    siteLink="https://barber-website.vercel.app"
+                />
             },
         ]
 
         const EMPTY_SLIDES = [{
-            index: 2,
-            content: <WorkSectionCard
-                title="Coming soon!"
-                description="Stay tuned ..."
-            />
-        }, {
             index: 3,
             content: <WorkSectionCard
                 title="Coming soon!"
@@ -330,7 +333,7 @@ const HomePage = () => {
                     <div data-aos="fade-up" data-aos-delay={200}><PricingCard2 /></div>
                     <div data-aos="fade-up" data-aos-delay={400}><PricingCard3 /></div>
                 </div>}
-                <div className="text-gray-700">Paying in installments is also available upon discussion 😊</div>
+            <div className="text-gray-700">Paying in installments is also available upon discussion 😊</div>
         </section>
     }
 

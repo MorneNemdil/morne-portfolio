@@ -333,7 +333,7 @@ const HomePage = () => {
                     <div data-aos="fade-up" data-aos-delay={200}><PricingCard2 /></div>
                     <div data-aos="fade-up" data-aos-delay={400}><PricingCard3 /></div>
                 </div>}
-            <div className="text-gray-700">Paying in installments is also available upon discussion 😊</div>
+            <div className="text-gray-700 text-center">Paying in installments is also available upon discussion 😊</div>
         </section>
     }
 

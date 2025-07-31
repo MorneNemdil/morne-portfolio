@@ -290,3 +290,13 @@ body {
     transform: rotate(0.0deg)
   }
 }
+
+.secret-heart {
+  color: transparent;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.secret-heart:hover {
+  color: #ff69b4; /* Or any visible color you like */
+}

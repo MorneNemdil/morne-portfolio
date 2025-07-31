@@ -64,6 +64,9 @@ const Header = () => {
                 >
                     <SiteLogo /><div className="logo-font w-[140px]">Morne Nemdil</div>
                 </Link>
+                <div className="flex items-center">
+                    <span className="text-3xl flex items-center h-full secret-heart" onClick={() => window.open("https://morne-heart-elma.vercel.app")}>💗</span>
+                </div>
                 <div className="flex gap-6 items-center">
                     <div className="flex gap-3 items-center font-semibold text-l">
                         {navlinks.filter(x => x.name !== 'home')
@@ -106,6 +109,7 @@ const Header = () => {
                                 >
                                     Morne's Portfolio
                                 </Link>
+                                <span className="secret-heart" onClick={() => window.open("https://morne-heart-elma.vercel.app")}>💗</span>
                             </SheetTitle>
                             <SheetDescription>
                                 Navigate to different sections here!
@@ -140,7 +144,7 @@ const Header = () => {
 
 
     return (
-        <div className={`fixed top-0 left-0 w-full z-10 transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-5"
+        <div className={`fixed top-0 left-0 w-full z-10 transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : " md:opacity-0 md:-translate-y-5"
             }`}>
             <div className="md:hidden">
                 <MobileHeader />

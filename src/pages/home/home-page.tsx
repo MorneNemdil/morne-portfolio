@@ -292,7 +292,7 @@ const HomePage = () => {
                     title="Barber with Booking"
                     description="This is a demo barber website created to showcase web design skills. It features a modern barbershop layout with example services, pricing, and a booking system."
                     image={BarberScreenshot}
-                    siteLink="https://barber-website.vercel.app"
+                    siteLink="https://barber-with-booking.vercel.app"
                 />
             },
         ]

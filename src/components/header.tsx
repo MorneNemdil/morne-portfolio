@@ -109,7 +109,7 @@ const Header = () => {
                                 >
                                     Morne's Portfolio
                                 </Link>
-                                <span className="secret-heart" onClick={() => window.open("https://morne-heart-elma.vercel.app")}>💗</span>
+                                <span className="secret-heart ml-5" onClick={() => window.open("https://morne-heart-elma.vercel.app")}>💗</span>
                             </SheetTitle>
                             <SheetDescription>
                                 Navigate to different sections here!

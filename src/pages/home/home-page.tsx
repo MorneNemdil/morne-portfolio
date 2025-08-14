@@ -49,6 +49,7 @@ import { Link } from "react-scroll";
 import { cn, isNullOrEmpty } from "@/lib/utils";
 import { CloudBackground } from "@/components/cloud-background";
 import BarberScreenshot from "@/assets/barber-screenshot.png";
+import PelmeniScreenshot from "@/assets/pelmeni-screenshot.png";
 
 const HomePage = () => {
     const { theme, setTheme } = useTheme();
@@ -273,26 +274,26 @@ const HomePage = () => {
             {
                 index: 0,
                 content: <WorkSectionCard
-                    title="Sanaz Art and Fashion"
-                    description="An art and fashion website for a designer based in Bournemouth."
-                    image={SanazImage}
-                    siteLink="https://www.sanazartandfashion.com"
+                    title="Barber with Booking"
+                    description="This is a demo barber website created to showcase web design skills. It features a modern barbershop layout with example services, pricing, and a booking system."
+                    image={BarberScreenshot}
+                    siteLink="https://barber-with-booking.vercel.app"
                 />
             }, {
                 index: 1,
+                content: <WorkSectionCard
+                    title="Pelmeni Handmade Brighton"
+                    description="Discover handmade Pelmeni and authentic Russian dishes in Brighton. Enjoy dumplings, crepes, hot lunches, breakfasts, sandwiches, desserts, and artisan coffee in a cosy setting. Vegan options available."
+                    image={PelmeniScreenshot}
+                    siteLink="https://www.pelmenihandmade.co.uk/"
+                />
+            }, {
+                index: 2,
                 content: <WorkSectionCard
                     title="My portfolio website"
                     description="A clean and responsive portfolio showing off my UI capabilities. Visit this page to learn more about me and get in touch with me!"
                     image={PortfolioImage}
                     siteLink="https://www.mornenemdil.com"
-                />
-            }, {
-                index: 2,
-                content: <WorkSectionCard
-                    title="Barber with Booking"
-                    description="This is a demo barber website created to showcase web design skills. It features a modern barbershop layout with example services, pricing, and a booking system."
-                    image={BarberScreenshot}
-                    siteLink="https://barber-with-booking.vercel.app"
                 />
             },
         ]
@@ -300,8 +301,10 @@ const HomePage = () => {
         const EMPTY_SLIDES = [{
             index: 3,
             content: <WorkSectionCard
-                title="Coming soon!"
-                description="Stay tuned ..."
+                title="Sanaz Art and Fashion"
+                description="An art and fashion website for a designer based in Bournemouth."
+                image={SanazImage}
+                siteLink="https://www.sanazartandfashion.com"
             />
         }, {
             index: 4,

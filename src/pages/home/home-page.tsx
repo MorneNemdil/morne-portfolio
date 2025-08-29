@@ -283,7 +283,7 @@ const HomePage = () => {
                 index: 1,
                 content: <WorkSectionCard
                     title="Pelmeni Handmade Brighton"
-                    description="Discover handmade Pelmeni and authentic Russian dishes in Brighton. Enjoy dumplings, crepes, hot lunches, breakfasts, sandwiches, desserts, and artisan coffee in a cosy setting. Vegan options available."
+                    description="Discover handmade Pelmeni and authentic Russian dishes in Brighton. Enjoy classic Russian cuisine in a cosy setting. Vegan options available."
                     image={PelmeniScreenshot}
                     siteLink="https://www.pelmenihandmade.co.uk/"
                 />

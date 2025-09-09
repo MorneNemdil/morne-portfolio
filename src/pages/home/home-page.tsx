@@ -106,18 +106,19 @@ const HomePage = () => {
                 </div>
                 <Card data-aos="fade-left" className="font-semibold md:font-normal transition-all">
                     <div data-aos="fade-left" data-aos-delay={250} className={`grow flex flex-col gap-3 text-lg sm:text-xl md:text-2xl`}>
-                        <div>I'm a passionate web developer based in the UK and I have a love for turning your ideas into well-crafted digital experiences. With a solid understanding of XML, CSS, Typescript, and many other tools, I specialise in creating responsive and user-friendly websites that balance form and function.</div>
-                        <div>I’m constantly learning and enjoy keeping up with the latest web trends and technologies. Whether it's working independently or with a team, I bring innovative problem-solving skills and attention to detail to each project I take on, whilst ensuring clean, maintainable code.</div>
+                        <div>I create landing page sites with integrated booking systems for restaurants and barbers. With a solid understanding of XML, CSS, Typescript, and many other tools, I specialise in creating responsive and user-friendly websites that balance form and function.</div>
+                        <div>I'm a passionate web developer who's constantly learning and enjoy keeping up with the latest web trends and technologies. Whether it's working independently or with a team, I bring innovative problem-solving skills and attention to detail to each project I take on, whilst ensuring clean, maintainable code.</div>
                         <div className="flex flex-wrap items-baseline">
                             <Link
                                 className={`font-bold ${breakpoint == 'lg' || breakpoint == 'xl' || breakpoint == 'md' ? `text-gray-500 hover:cursor-pointer transition-all duration-700 ${theme == 'dark' ? "hover:text-pink-500" : "hover:text-blue-400"} hover:-rotate-2 hover:text-[26px]` : `${theme == 'dark' ? "text-pink-500" : "text-blue-500"}`} inline-block`}
-                                to="contact"
+                                to="work"
                                 smooth={true}
                                 duration={870}
+                                offset={-100}
                             >
-                                Get in touch&nbsp;
+                                Check out some of my work&nbsp;
                             </Link>
-                            <span className="inline">if you're ready to take your business to the next level with a clean, responsive and functional website.</span>
+                            <span className="inline">to explore the clean, responsive, and functional websites I’ve created for businesses like yours.</span>
                         </div>
                     </div>
                 </Card>

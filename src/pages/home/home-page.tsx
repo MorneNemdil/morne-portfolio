@@ -275,16 +275,16 @@ const HomePage = () => {
             {
                 index: 0,
                 content: <WorkSectionCard
-                    title="Barber with Booking"
-                    description="This is a demo barber website created to showcase web design skills. It features a modern barbershop layout with example services, pricing, and a booking system."
+                    title="Demo Barber Site"
+                    description="This is a demo barber website featuring a modern barbershop layout with example services, pricing, and a booking system."
                     image={BarberScreenshot}
                     siteLink="https://barber-with-booking.vercel.app"
                 />
             }, {
                 index: 1,
                 content: <WorkSectionCard
-                    title="Pelmeni Handmade Brighton"
-                    description="Discover handmade Pelmeni and authentic Russian dishes in Brighton. Enjoy classic Russian cuisine in a cosy setting. Vegan options available."
+                    title="Pelmeni Handmade"
+                    description="Discover handmade Pelmeni and authentic Russian dishes in Brighton. Enjoy classic Russian cuisine in a cosy setting."
                     image={PelmeniScreenshot}
                     siteLink="https://www.pelmenihandmade.co.uk/"
                 />

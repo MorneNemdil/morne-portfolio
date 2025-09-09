@@ -13,7 +13,7 @@ const WorkCarouselMobile = ({ slides }: WorkCarouselMobileProps) => {
         <div className="flex flex-col items-center gap-8">
             <Carousel className="w-[70vw]">
                 <CarouselContent>
-                    {slides.map(slide => <CarouselItem className="!h-[50vh] md:!h-[60vh] lg:!h-[70vh]" key={slide.index}>
+                    {slides.map(slide => <CarouselItem className="!h-[55vh] md:!h-[60vh] lg:!h-[70vh]" key={slide.index}>
                         <Card className="h-full">{slide.content}</Card>
                     </CarouselItem>)}
                 </CarouselContent>

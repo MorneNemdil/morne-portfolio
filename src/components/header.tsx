@@ -44,6 +44,7 @@ const Header = () => {
         { name: 'education', displayName: "Education", offset: -50 },
         { name: 'technologies', displayName: "Technologies", offset: -80 },
         { name: 'work', displayName: "Work", offset: -140 },
+        { name: 'reviews', displayName: "Reviews", offset: -140 },
         { name: 'pricing', displayName: "Pricing", offset: -95 },
         { name: 'contact', displayName: "Contact", offset: 0 },
     ];

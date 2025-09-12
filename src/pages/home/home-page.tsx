@@ -50,6 +50,8 @@ import { cn, isNullOrEmpty } from "@/lib/utils";
 import { CloudBackground } from "@/components/cloud-background";
 import BarberScreenshot from "@/assets/barber-screenshot.png";
 import PelmeniScreenshot from "@/assets/pelmeni-screenshot.png";
+import SanazLogo from "@/assets/logos/sanazLogo.jpg";
+import PelmeniLogo from "@/assets/logos/pelmeniLogo.jpg";
 
 const HomePage = () => {
     const { theme, setTheme } = useTheme();
@@ -315,13 +317,46 @@ const HomePage = () => {
             />
         }]
 
-        return (<section id="work" className="main-section mt-60 lg:my-80">
+        return (<section id="work" className="main-section mt-60 lg:mt-80 lg:mb-60">
             <div className="section-title" data-aos="fade-up">Work 💻</div>
             {breakpoint == 'xl'
                 ? <EmblaCarousel slides={SLIDES.concat(EMPTY_SLIDES)} options={OPTIONS} />
                 : <WorkCarouselMobile slides={SLIDES} />}
         </section>)
     }
+
+    const ReviewsSection = () => {
+        return <section id="reviews" className="main-section mt-60 lg:mb-60" >
+            <div className="section-title" data-aos="fade-up">Reviews 👏</div>
+            <div className="flex flex-col xl:flex-row justify-between px-13 md:px-60 gap-40 md:gap-60 mt-25">
+                <div className="flex flex-col items-center gap-10 bg-[var(--background)] border border-[var(--background)] rounded-2xl">
+                    <img
+                        src={SanazLogo}
+                        alt="banner logo"
+                        className="border rounded-full w-[7vh] md:w-[10vh]"
+                    />
+                    <p className="text-center text-xl md:text-3xl">Working with Morne on my portfolio website was such a smooth and creative process. He really listened to my ideas and understood the artistic vision behind my brand. I would gladly recommend him to other creatives looking for a strong online presence.</p>
+                    <div>
+                        <p className="text-center font-bold">Sanaz</p>
+                        <p className="text-center font-bold">Sanaz Art and Fashion</p>
+                    </div>
+                </div>
+                <div className="flex flex-col items-center gap-10 bg-[var(--background)] border border-[var(--background)] rounded-2xl">
+                    <img
+                        src={PelmeniLogo}
+                        alt="banner logo"
+                        className="border rounded-full w-[7vh] md:w-[10vh]"
+                    />
+                    <p className="text-center text-xl md:text-3xl">The Coffee Shop Pelmeni team wants to thank Morne for the quick, high-quality work, the flexibility, and the great end result on our café’s webpage. We can honestly recommend him as a skilled professional who delivers!</p>
+                    <div>
+                        <p className="text-center font-bold">Alexander</p>
+                        <p className="text-center font-bold">Pelmeni Handmade</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+
 
     const PricingSection = () => {
         return <section id="pricing" className="main-section mt-60 lg:mt-0" >
@@ -440,6 +475,7 @@ const HomePage = () => {
             <EducationSection />
             <TechnologiesSection />
             <WorkSection />
+            <ReviewsSection />
             <PricingSection />
             <ContactSection />
             <div className="h-40 md:h-10" />

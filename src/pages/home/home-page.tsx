@@ -4,8 +4,8 @@ import { useTheme } from "@/components/theme-provider"
 import TypewriterText, { type TypeWriterSegmentProps } from "@/components/typewriter-text";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowDown } from "lucide-react";
-import { useEffect, type JSX } from "react";
+import { ArrowDown, ArrowRight, CheckCircle2, Instagram, Mail, Send, X } from "lucide-react";
+import { useEffect, useState, type JSX } from "react";
 import EmblaCarousel from "@/components/embla-ui/embla-carousel";
 import type { EmblaOptionsType } from 'embla-carousel'
 import '@/embla.css';
@@ -52,11 +52,13 @@ import BarberScreenshot from "@/assets/barber-screenshot.png";
 import PelmeniScreenshot from "@/assets/pelmeni-screenshot.png";
 import SanazLogo from "@/assets/logos/sanazLogo.jpg";
 import PelmeniLogo from "@/assets/logos/pelmeniLogo.jpg";
+import ReactModal from 'react-modal';
 
 const HomePage = () => {
     const { theme, setTheme } = useTheme();
     const breakpoint = useBreakpoint();
     useEffect(() => setTheme('dark'), []);
+    const [modalOpen, setModalOpen] = useState<string | null>(null);
 
     const typewriterText = "I'm a ";
     const typewriterSegments: TypeWriterSegmentProps[] = [
@@ -68,6 +70,18 @@ const HomePage = () => {
 
     const heroTitleSize = "text-3xl sm:text-5xl md:text-6xl";
     const heroDescriptionSize = "text-xl sm:text-2xl md:text-3xl";
+
+    const modalStyles = {
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+        },
+    };
+
 
     const HeroSection = () => {
         return (<section id="hero" className="main-section mt-[200px]">
@@ -85,11 +99,19 @@ const HomePage = () => {
                         Welcome to my Portfolio, feel free to have a look around and get in touch with me for more info!
                     </div>
                 </div>
+                <div className="flex gap-3">
+                    <div onClick={() => window.open("https://www.instagram.com/code.with.yousef")} className={`${theme == 'dark' ? 'bg-white hover:bg-gray-200 text-black' : 'bg-gray-900 hover:bg-gray-800 text-white'} hover:cursor-pointer w-min p-1.5 border rounded-xl border-gray-300 shadow-xl transition duration-250`}>
+                        <Instagram size={28} />
+                    </div>
+                    <div onClick={() => setModalOpen("open")} className={`${theme == 'dark' ? 'bg-white hover:bg-gray-200 text-black' : 'bg-gray-900 hover:bg-gray-800 text-white'} flex items-center hover:cursor-pointer p-1.5 border rounded-xl border-gray-300 shadow-xl transition duration-250`}>
+                        <span className="font-bold">Free React Project Template</span><span className="ml-1 text-xl">🌐</span> <ArrowRight />
+                    </div>
+                </div>
             </div>
             <Link to={"about"} smooth={true} duration={600}>
                 <ArrowDown className={`mt-[10vh] border ${theme == 'dark' ? "border-purple-300" : "border-blue-200"} border-2 rounded-full p-1.5 animate-bounce hover:cursor-pointer`} size={48} />
             </Link>
-        </section>)
+        </section >)
     }
 
     const AboutSection = () => {
@@ -466,10 +488,134 @@ const HomePage = () => {
         </section>
     }
 
+    const FreeTemplateModal = () => {
+        const [email, setEmail] = useState("");
+        const [submitted, setSubmitted] = useState(false);
+
+        const handleSubmit = (event: any) => {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const formDataObject = Object.fromEntries(formData.entries());
+
+            for (const key in formDataObject) {
+                const value = formDataObject[key];
+                if (typeof value == 'string' && key !== 'phoneNumber' && isNullOrEmpty(value)) {
+                    toast.error("All required fields must be completed")
+                    return;
+                }
+            }
+
+            let fechData = {
+                method: 'POST',
+                body: JSON.stringify({ email: email }),
+                headers: { "Content-Type": "application/json" }
+            }
+
+            fetch("/api/send-template.js", fechData);
+
+            setSubmitted(true);
+        };
+
+        return (
+            <ReactModal
+                isOpen={modalOpen != null}
+                onAfterOpen={() => { }}
+                onRequestClose={() => {
+                    setModalOpen(null);
+                    setSubmitted(false);
+                }}
+                style={{
+                    overlay: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.75)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        zIndex: 1000,
+                    },
+                    content: {
+                        position: 'relative',
+                        inset: 'auto',
+                        padding: '0',
+                        border: 'none',
+                        borderRadius: '12px',
+                        maxWidth: '500px',
+                        width: '60%',
+                        maxHeight: '90vh',
+                        overflow: 'auto',
+                    }
+                }}
+                ariaHideApp={false}
+            >
+                {!submitted ? (
+                    <div className="flex flex-col gap-6 p-8 bg-white">
+                        <div className="flex justify-between items-start">
+                            <div className="flex-1">
+                                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                                    Get Your Free React Template
+                                </h2>
+                                <p className="text-gray-600">
+                                    Enter your email and I'll send you your free React project template!
+                                </p>
+                            </div>
+                            <button
+                                onClick={() => setModalOpen(null)}
+                                className="text-gray-400 hover:text-gray-600 transition-colors"
+                                aria-label="Close modal"
+                            >
+                                <X className="w-5 h-5" />
+                            </button>
+                        </div>
+
+                        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                            <div className="flex flex-col gap-2">
+                                <label htmlFor="email" className="text-sm font-medium text-gray-700">
+                                    Email Address
+                                </label>
+                                <div className="relative">
+                                    <Input
+                                        id="email"
+                                        type="email"
+                                        placeholder="you@example.com"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        required
+                                        className="pr-10"
+                                    />
+                                    <Mail className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4 pointer-events-none" />
+                                </div>
+                            </div>
+
+                            <Button type="submit" className="w-full mt-2">
+                                <Send className="w-4 h-4 mr-2" />
+                                Send Template
+                            </Button>
+                        </form>
+                    </div>
+                ) : (
+                    <div className="flex flex-col items-center justify-center p-12 bg-white text-center">
+                        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                            <CheckCircle2 className="w-8 h-8 text-green-600" />
+                        </div>
+                        <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                            Check Your Email!
+                        </h3>
+                        <p className="text-gray-600 mb-6">
+                            Your free React template is on its way to your inbox.
+                        </p>
+                        <Button onClick={() => setModalOpen(null)} className="w-full max-w-xs">
+                            Close
+                        </Button>
+                    </div>
+                )}
+            </ReactModal>
+        );
+    }
+
     return (
         <div className="">
             {theme == 'dark' ? <StarBackground /> : <CloudBackground />}
-            <Header />
+            <FreeTemplateModal />
+            {!modalOpen && <Header />}
             <HeroSection />
             <AboutSection />
             <EducationSection />

@@ -5,12 +5,13 @@ import { Toaster } from "sonner"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from "react";
+import { EmailUsersProvider } from "./lib/context/emailUserContext";
 
 // Appwrite imports:
 // import { UserProvider } from "./lib/context/user"
 // import Login from "./pages/auth/login/login"
 
-function App() {  
+function App() {
   useEffect(() => {
     AOS.init();
   }, []);
@@ -31,13 +32,15 @@ function App() {
     // </ThemeProvider>
 
     <ThemeProvider>
-      <BrowserRouter>
-        <Toaster />
-        <Routes>
-          <Route path="/" element={<HomePage />}>
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <EmailUsersProvider>
+        <BrowserRouter>
+          <Toaster />
+          <Routes>
+            <Route path="/" element={<HomePage />}>
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </EmailUsersProvider>
     </ThemeProvider>
   )
 }

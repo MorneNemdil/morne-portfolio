@@ -53,6 +53,9 @@ import PelmeniScreenshot from "@/assets/pelmeni-screenshot.png";
 import SanazLogo from "@/assets/logos/sanazLogo.jpg";
 import PelmeniLogo from "@/assets/logos/pelmeniLogo.jpg";
 import ReactModal from 'react-modal';
+import { useEmailUsers } from "@/lib/context/emailUserContext";
+import type { EmailUser } from "@/lib/context/emailUserContext";
+
 
 const HomePage = () => {
     const { theme, setTheme } = useTheme();
@@ -479,27 +482,18 @@ const HomePage = () => {
     const FreeTemplateModal = () => {
         const [email, setEmail] = useState("");
         const [submitted, setSubmitted] = useState(false);
+        const emailUsersContext = useEmailUsers();
+        if (!emailUsersContext) throw new Error("useEmailUsers must be used within an EmailUsersProvider");
 
         const handleSubmit = (event: any) => {
             event.preventDefault();
-            const formData = new FormData(event.target);
-            const formDataObject = Object.fromEntries(formData.entries());
 
-            for (const key in formDataObject) {
-                const value = formDataObject[key];
-                if (typeof value == 'string' && key !== 'phoneNumber' && isNullOrEmpty(value)) {
-                    toast.error("All required fields must be completed")
-                    return;
-                }
+            const newEmailUser: EmailUser = {
+                emailAddress: email,
+                isSubscribed: true
             }
 
-            let fechData = {
-                method: 'POST',
-                body: JSON.stringify({ email: email }),
-                headers: { "Content-Type": "application/json" }
-            }
-
-            fetch("/api/send-email.js", fechData);
+            emailUsersContext.add(newEmailUser);
 
             setSubmitted(true);
         };
@@ -553,7 +547,7 @@ const HomePage = () => {
                             </button>
                         </div>
 
-                        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                        <div className="flex flex-col gap-4">
                             <div className="flex flex-col gap-2">
                                 <label htmlFor="email" className="text-sm font-medium text-gray-700">
                                     Email Address
@@ -572,11 +566,11 @@ const HomePage = () => {
                                 </div>
                             </div>
 
-                            <Button type="submit" className="w-full mt-2">
+                            <Button onClick={handleSubmit} type="submit" className="w-full mt-2">
                                 <Send className="w-4 h-4 mr-2" />
                                 Send Template
                             </Button>
-                        </form>
+                        </div>
                     </div>
                 ) : (
                     <div className="flex flex-col items-center justify-center p-12 bg-white text-center">

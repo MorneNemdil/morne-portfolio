@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
-import { ID, Permission, Role } from "appwrite";
-import { databases } from "../appwrite.ts";
+import { ID } from "appwrite";
+import { databases, storage } from "../appwrite.ts";
 import { toast } from "sonner";
 
 export type EmailUser = {
@@ -11,7 +11,7 @@ export type EmailUser = {
 
 type EmailUsersContextValue = {
   // current: EmailUser[];
-  add: (user: EmailUser) => Promise<void>;
+  add: (user: EmailUser) => Promise<boolean>;
   // remove: (id: string) => sPromise<void>;
 };
 
@@ -24,20 +24,25 @@ export function useEmailUsers() {
 export function EmailUsersProvider(props: any) {
   // const [emailUsers, setEmailUsers] = useState<EmailUser[]>([]);
 
-  async function add(user: EmailUser) {
+/**
+ * Provides email users context to child components
+ * @param props - Component props
+ * @returns {boolean} `true` if the operation is successful, `false` otherwise
+ */
+  async function add(user: EmailUser): Promise<boolean> {
     try {
       if (!user?.emailAddress) throw new Error("Invalid Email Address");
 
       // const createdUser =
-        await databases.createDocument(
-          import.meta.env.VITE_APPWRITE_DATABASE_ID,
-          import.meta.env.VITE_APPWRITE_EMAIL_USERS_COLLECTION_ID,
-          ID.unique(),
-          {
-            emailAddress: user.emailAddress,
-            isSubscribed: user.isSubscribed,
-          },
-        );
+      await databases.createDocument(
+        import.meta.env.VITE_APPWRITE_DATABASE_ID,
+        import.meta.env.VITE_APPWRITE_EMAIL_USERS_COLLECTION_ID,
+        ID.unique(),
+        {
+          emailAddress: user.emailAddress,
+          isSubscribed: user.isSubscribed,
+        },
+      );
 
       // const newUser: EmailUser = {
       //   id: createdUser.$id,
@@ -46,10 +51,18 @@ export function EmailUsersProvider(props: any) {
       // };
 
       // setEmailUsers((prev) => [newUser, ...prev].slice(0, 50));
+
+      const downloadUrl = storage.getFileDownload(
+        import.meta.env.VITE_APPWRITE_BUCKET_ID,
+        import.meta.env.VITE_APPWRITE_FILE_ID
+      );
+      window.location.href = downloadUrl;
+
       toast.success("Email user added successfully!");
+      return true;
     } catch (error) {
-      console.error(error);
-      toast.error("Failed to add email user.");
+      toast.error("Invalid Email Address. Try again.")
+      return false;
     }
   }
 

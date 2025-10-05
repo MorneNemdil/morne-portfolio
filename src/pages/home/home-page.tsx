@@ -485,7 +485,7 @@ const HomePage = () => {
         const emailUsersContext = useEmailUsers();
         if (!emailUsersContext) throw new Error("useEmailUsers must be used within an EmailUsersProvider");
 
-        const handleSubmit = (event: any) => {
+        const handleSubmit = async (event: any) => {
             event.preventDefault();
 
             const newEmailUser: EmailUser = {
@@ -493,9 +493,11 @@ const HomePage = () => {
                 isSubscribed: true
             }
 
-            emailUsersContext.add(newEmailUser);
+            const success: boolean = await emailUsersContext.add(newEmailUser);
+            if (success) {
+                setSubmitted(true);
+            }
 
-            setSubmitted(true);
         };
 
         return (
@@ -535,7 +537,7 @@ const HomePage = () => {
                                     Get Your Free React Template
                                 </h2>
                                 <p className="text-gray-600">
-                                    Enter your email and I'll send you your free React project template!
+                                    Enter your email to get your free React Project Template!
                                 </p>
                             </div>
                             <button
@@ -578,10 +580,10 @@ const HomePage = () => {
                             <CheckCircle2 className="w-8 h-8 text-green-600" />
                         </div>
                         <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                            Check Your Email!
+                            Download started!
                         </h3>
                         <p className="text-gray-600 mb-6">
-                            Your free React template is on its way to your inbox.
+                            If something went wrong, please contact me on instagram @code.with.yousef.
                         </p>
                         <Button onClick={() => setModalOpen(null)} className="w-full max-w-xs">
                             Close

@@ -90,11 +90,11 @@ const HomePage = () => {
                         Welcome to my Portfolio, feel free to have a look around and get in touch with me for more info!
                     </div>
                 </div>
-                <div className="flex gap-3">
+                <div data-aos="fade-up" data-aos-duration={600} data-aos-delay={900} className="flex gap-3">
                     <div onClick={() => window.open("https://www.instagram.com/code.with.yousef")} className={`${theme == 'dark' ? 'bg-white hover:bg-gray-200 text-black' : 'bg-gray-900 hover:bg-gray-800 text-white'} hover:cursor-pointer w-min p-1.5 border rounded-xl border-gray-300 shadow-xl transition duration-250`}>
                         <Instagram size={28} />
                     </div>
-                    <div onClick={() => setModalOpen("open")} className={`${theme == 'dark' ? 'bg-white hover:bg-gray-200 text-black' : 'bg-gray-900 hover:bg-gray-800 text-white'} flex items-center hover:cursor-pointer p-1.5 border rounded-xl border-gray-300 shadow-xl transition duration-250`}>
+                    <div data-aos="fade-up" data-aos-duration={600} data-aos-delay={0} onClick={() => setModalOpen("open")} className={`${theme == 'dark' ? 'bg-white hover:bg-gray-200 text-black' : 'bg-gray-900 hover:bg-gray-800 text-white'} flex items-center hover:cursor-pointer p-1.5 border rounded-xl border-gray-300 shadow-xl transition duration-250`}>
                         <span className="font-bold">Free React Project Template</span><span className="ml-1 text-xl">🌐</span> <ArrowRight />
                     </div>
                 </div>

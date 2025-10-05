@@ -46,7 +46,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import Portrait from "@/assets/portrait-Photoroom.jpg";
 import { Link } from "react-scroll";
-import { cn, isNullOrEmpty } from "@/lib/utils";
+import { isNullOrEmpty } from "@/lib/utils";
 import { CloudBackground } from "@/components/cloud-background";
 import BarberScreenshot from "@/assets/barber-screenshot.png";
 import PelmeniScreenshot from "@/assets/pelmeni-screenshot.png";
@@ -121,8 +121,8 @@ const HomePage = () => {
                 </div>
                 <Card data-aos="fade-left" className="font-semibold md:font-normal transition-all">
                     <div data-aos="fade-left" data-aos-delay={250} className={`grow flex flex-col gap-3 text-lg sm:text-xl md:text-2xl`}>
-                        <div>I create landing page sites with integrated booking systems for restaurants and barbers. With a solid understanding of XML, CSS, Typescript, and many other tools, I specialise in creating responsive and user-friendly websites that balance form and function.</div>
-                        <div>I'm a passionate web developer who's constantly learning and enjoy keeping up with the latest web trends and technologies. Whether it's working independently or with a team, I bring innovative problem-solving skills and attention to detail to each project I take on, whilst ensuring clean, maintainable code.</div>
+                        <div>I genuinely love web development and enjoy staying on top of new tools and trends. I'm comfortable working solo or in a team, and I focus on writing clean, maintainable code while solving problems creatively. Whether it's a sleek landing page or a full booking system, I make sure the end result looks good and works even better.</div>
+                        <div>I'm a 4th-year Computer Science student at the University of Sussex, currently on track for a First. I build landing pages with integrated booking systems for restaurants and barbers, specializing in responsive, user-friendly websites using TypeScript, React, and modern web technologies.</div>
                         <div className="flex flex-wrap items-baseline">
                             <Link
                                 className={`font-bold ${breakpoint == 'lg' || breakpoint == 'xl' || breakpoint == 'md' ? `text-gray-500 hover:cursor-pointer transition-all duration-700 ${theme == 'dark' ? "hover:text-pink-500" : "hover:text-blue-400"} hover:-rotate-2 hover:text-[26px]` : `${theme == 'dark' ? "text-pink-500" : "text-blue-500"}`} inline-block`}
@@ -141,25 +141,25 @@ const HomePage = () => {
         </section>)
     }
 
-    const EducationSection = () => {
-        return (<section id="education" className="main-section my-70 2xl:my-0">
-            <div className="section-title" data-aos="fade-up">Education 🎓</div>
-            <div className="flex flex-col 2xl:flex-row w-full 2xl:w-[60vw] justify-center items-center gap-10 text-lg font-semibold md:font-normal sm:text-xl md:text-2xl">
-                <Card data-aos="fade-right" className={cn("flex flex-col items-center w-[75%] 2xl:w-1/2 gap-5 h-full transition-all")}>
-                    <div className={"text-3xl md:text-4xl".concat(theme == 'dark' ? ' text-purple-400' : ' text-blue-400')}>College</div>
-                    <div className="px-5">
-                        College is where I chose to go all in on a computer-related career. I started taking my studies a lot more seriously in order to be able to do my desired course at University. College is where I built the work ethic to be able to go on to do a university career, and my course in Computer Science helped me build the fundamentals of programing and related concepts.
-                    </div>
-                </Card>
-                <Card data-aos="fade-left" data-aos-delay={200} className="flex flex-col items-center w-[75%] 2xl:w-1/2 gap-5 h-full transition-all">
-                    <div className={"text-3xl md:text-4xl".concat(theme == 'dark' ? ' text-purple-400' : ' text-blue-400')}>University</div>
-                    <div className="px-5">
-                        I'm currently in my 4th year of my undergraduate degree in Computer Science at the University of Sussex, on track to achieve a grade 1st. In my third year, I worked as a web developer for RSM UK which is where I really honed in on web development as a career. This is where I became a much more confident in my skills.
-                    </div>
-                </Card>
-            </div>
-        </section>)
-    }
+    // const EducationSection = () => {
+    //     return (<section id="education" className="main-section my-70 2xl:my-0">
+    //         <div className="section-title" data-aos="fade-up">Education 🎓</div>
+    //         <div className="flex flex-col 2xl:flex-row w-full 2xl:w-[60vw] justify-center items-center gap-10 text-lg font-semibold md:font-normal sm:text-xl md:text-2xl">
+    //             <Card data-aos="fade-right" className={cn("flex flex-col items-center w-[75%] 2xl:w-1/2 gap-5 h-full transition-all")}>
+    //                 <div className={"text-3xl md:text-4xl".concat(theme == 'dark' ? ' text-purple-400' : ' text-blue-400')}>College</div>
+    //                 <div className="px-5">
+    //                     College is where I chose to go all in on a computer-related career. I started taking my studies a lot more seriously in order to be able to do my desired course at University. College is where I built the work ethic to be able to go on to do a university career, and my course in Computer Science helped me build the fundamentals of programing and related concepts.
+    //                 </div>
+    //             </Card>
+    //             <Card data-aos="fade-left" data-aos-delay={200} className="flex flex-col items-center w-[75%] 2xl:w-1/2 gap-5 h-full transition-all">
+    //                 <div className={"text-3xl md:text-4xl".concat(theme == 'dark' ? ' text-purple-400' : ' text-blue-400')}>University</div>
+    //                 <div className="px-5">
+    //                     I'm currently in my 4th year of my undergraduate degree in Computer Science at the University of Sussex, on track to achieve a grade 1st. In my third year, I worked as a web developer for RSM UK which is where I really honed in on web development as a career. This is where I became a much more confident in my skills.
+    //                 </div>
+    //             </Card>
+    //         </div>
+    //     </section>)
+    // }
 
     const TechnologiesSection = () => {
         const isMobile = breakpoint == 'sm' || breakpoint == 'md';
@@ -601,7 +601,7 @@ const HomePage = () => {
             {!modalOpen && <Header />}
             <HeroSection />
             <AboutSection />
-            <EducationSection />
+            {/* <EducationSection /> */}
             <TechnologiesSection />
             <WorkSection />
             <ReviewsSection />

@@ -41,7 +41,7 @@ const Header = () => {
     const navlinks = [
         { name: 'home', displayName: "Home", offset: 0 },
         { name: 'about', displayName: "About", offset: -60 },
-        { name: 'education', displayName: "Education", offset: -50 },
+        // { name: 'education', displayName: "Education", offset: -50 },
         { name: 'technologies', displayName: "Technologies", offset: -80 },
         { name: 'work', displayName: "Work", offset: -140 },
         { name: 'reviews', displayName: "Reviews", offset: -140 },

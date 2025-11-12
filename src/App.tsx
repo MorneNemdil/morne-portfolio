@@ -13,7 +13,7 @@ import { EmailUsersProvider } from "./lib/context/emailUserContext";
 
 function App() {
   useEffect(() => {
-    AOS.init();
+    AOS.init()
   }, []);
 
   return (

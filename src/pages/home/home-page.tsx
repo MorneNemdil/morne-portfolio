@@ -55,6 +55,7 @@ import PelmeniLogo from "@/assets/logos/pelmeniLogo.jpg";
 import ReactModal from 'react-modal';
 import { useEmailUsers } from "@/lib/context/emailUserContext";
 import type { EmailUser } from "@/lib/context/emailUserContext";
+import OuthouseScreenshot from "@/assets/outhouse-screenshot.png";
 
 
 const HomePage = () => {
@@ -314,21 +315,31 @@ const HomePage = () => {
             },
         ]
 
-        const EMPTY_SLIDES = [{
-            index: 3,
-            content: <WorkSectionCard
-                title="Sanaz Art and Fashion"
-                description="An art and fashion website for a designer based in Bournemouth."
-                image={SanazImage}
-                siteLink="https://www.sanazartandfashion.com"
-            />
-        }, {
-            index: 4,
-            content: <WorkSectionCard
-                title="Coming soon!"
-                description="Stay tuned ..."
-            />
-        }]
+        const EMPTY_SLIDES = [
+            {
+                index: 3,
+                content: <WorkSectionCard
+                    title="Sanaz Art and Fashion"
+                    description="An art and fashion website for a designer based in Bournemouth."
+                    image={SanazImage}
+                    siteLink="https://www.sanazartandfashion.com"
+                />
+            }, {
+                index: 4,
+                content: <WorkSectionCard
+                    title="Outhouse Carpentry & Construction"
+                    description="An excellent construction website for the outhouse company. Shows off their talent and work ethic in a clean, mobile-friendly design."
+                    image={OuthouseScreenshot}
+                    siteLink="https://oakland-carpentry-website.vercel.app/"
+                />
+            }, {
+                index: 5,
+                content: <WorkSectionCard
+                    title="Coming soon!"
+                    description="Stay tuned ..."
+                />
+            },
+        ]
 
         return (<section id="work" className="main-section mt-60 lg:mt-80 lg:mb-60">
             <div className="section-title" data-aos="fade-up">Work 💻</div>
